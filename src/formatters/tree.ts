@@ -23,19 +23,19 @@ export function formatAsTree(graph: ProjectGraph): string {
 
   // Statistics
   lines.push('📊 Statistics:');
-  lines.push(`  Total files: ${stats.totalFiles}`);
-  lines.push(`  Total dependencies: ${stats.totalEdges}`);
-  lines.push(`  Average dependencies per file: ${stats.averageDependencies.toFixed(2)}`);
-  lines.push(`  Max dependencies: ${stats.maxDependencies}`);
-  lines.push(`  Files with no dependencies: ${stats.filesWithNoDependencies}`);
-  lines.push(`  Files with no dependents: ${stats.filesWithNoDependents}`);
+  lines.push(`   ∑ Total files: ${stats.totalFiles}`);
+  lines.push(`   ∑ Total dependencies: ${stats.totalEdges}`);
+  lines.push(`   Ø  Average dependencies per file: ${stats.averageDependencies.toFixed(2)}`);
+  lines.push(`   ↑  Max dependencies: ${stats.maxDependencies}`);
+  lines.push(`   🍃  Files with no dependencies: ${stats.filesWithNoDependencies}`);
+  lines.push(`   📂  Files with no dependents: ${stats.filesWithNoDependents}`);
 
   if (stats.circularDependencies.length > 0) {
     lines.push('');
-    lines.push(`  WARNING: ${stats.circularDependencies.length} circular dependencies detected!`);
+    lines.push(`   ⚠ WARNING: ${stats.circularDependencies.length} circular dependencies detected!`);
   } else {
     lines.push('');
-    lines.push(`  ✅: No circular dependencies detected!`);
+    lines.push(`   ✅: No circular dependencies detected!`);
   }
 
   lines.push('');
@@ -79,7 +79,7 @@ export function formatAsTree(graph: ProjectGraph): string {
 
   // Display root files (entry points)
   if (rootFiles.length > 0) {
-    lines.push(`Entry Points (files with no dependents): ${rootFiles.length}`);
+    lines.push(`📂 Entry Points (files with no dependents): ${rootFiles.length}`);
     for (const filePath of rootFiles) {
       const node = graph.nodes.get(filePath)!;
       lines.push(`  ${normalizePath(node.relativePath)} (${node.dependencies.length} dependencies)`);
@@ -92,7 +92,7 @@ export function formatAsTree(graph: ProjectGraph): string {
 
   // Display leaf files
   if (leafFiles.length > 0) {
-    lines.push('Leaf Files (files with no dependencies):');
+    lines.push('🍃 Leaf Files (files with no dependencies):');
     for (const filePath of leafFiles) {
       const node = graph.nodes.get(filePath)!;
       lines.push(`  ${normalizePath(node.relativePath)} (${node.dependents.length} dependents)`);
@@ -104,7 +104,7 @@ export function formatAsTree(graph: ProjectGraph): string {
 
   // Display isolated files
   if (isolatedFiles.length > 0) {
-    lines.push('Isolated Files (no dependencies or dependents):');
+    lines.push('🏝️ Isolated Files (no dependencies or dependents):');
     for (const filePath of isolatedFiles) {
       const node = graph.nodes.get(filePath)!;
       lines.push(`  ${normalizePath(node.relativePath)}`);
