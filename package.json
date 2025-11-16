@@ -1,0 +1,36 @@
+{
+  "name": "spidernet",
+  "version": "1.0.0",
+  "description": "CLI tool to build dependency graphs for TypeScript/React projects",
+  "main": "dist/index.js",
+  "bin": {
+    "spidernet": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts",
+    "format": "prettier --write .",
+    "ft": "npm run format && npm t",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "dependency-graph",
+    "typescript",
+    "react",
+    "analyzer"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "commander": "^14.0.2"
+  }
+}
