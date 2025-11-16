@@ -43,7 +43,7 @@ export function formatAsHtml(graph: ProjectGraph): string {
   </div>
 
   <script>
-    ${generateJavaScript(edgesJson)}
+    ${generateJavaScript(graph.rootDir, edgesJson)}
   </script>
 </body>
 </html>`;
@@ -78,8 +78,9 @@ function generateEdgesJson(graph: ProjectGraph): string {
 /**
  * Generate JavaScript code for drawing dependency lines
  */
-function generateJavaScript(edgesJson: string): string {
+function generateJavaScript(rootPath:string, edgesJson: string): string {
   return `
+  window.tangly_root = "${normalizePath(rootPath)}/";
   window.tangly_edges = ${edgesJson};
   ${readTemplateFileContent('script.js')}
   `;

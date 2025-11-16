@@ -99,9 +99,10 @@
         path.setAttribute("stroke-dasharray", "5,5");
       }
       path.setAttribute("class", "dependency-line");
+      path.setAttribute("pointer-events", "stroke"); // Enable hover on stroke only
 
       const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-      title.textContent = `${edge.from} → ${edge.to}`;
+      title.textContent = `${edge.from.replace(window.tangly_root,'')} → ${edge.to.replace(window.tangly_root,'')}`;
       path.appendChild(title);
 
       svg.appendChild(path);
