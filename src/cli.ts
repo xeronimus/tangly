@@ -3,6 +3,7 @@
 import {Command} from 'commander';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as chokidar from 'chokidar';
 import {analyzeProject} from './analyzer';
 import {OutputFormat, ConfigFile} from './types';
 import {readConfigFile, mergeOptions} from './config';
@@ -18,10 +19,11 @@ program
   .option('-f, --format <format>', 'Output format: json, dot, dot-hierarchy, tree, or html')
   .option('-o, --output <file>', 'Output file (defaults to stdout)')
   .option('--include-external', 'Include external dependencies (node_modules, etc.)')
+  .option('-w, --watch', 'Watch for file changes and regenerate automatically')
   .action(
     async (
       directory: string,
-      options: {config?: string; format?: string; output?: string; includeExternal?: boolean}
+      options: { config?: string; format?: string; output?: string; includeExternal?: boolean; watch?: boolean }
     ) => {
       try {
         // Resolve the directory path
@@ -66,24 +68,85 @@ program
           process.exit(1);
         }
 
-        // Run the analyzer
-        const result = await analyzeProject({
-          rootDir,
-          format,
-          output: mergedOptions.output,
-          includeExternal: mergedOptions.includeExternal,
-          excludePatterns:
-            typeof mergedOptions.excludePatterns === 'string'
-              ? [mergedOptions.excludePatterns]
-              : mergedOptions.excludePatterns
-        });
+        // Function to run analysis
+        const runAnalysis = async () => {
+          try {
+            const result = await analyzeProject({
+              rootDir,
+              format,
+              output: mergedOptions.output,
+              includeExternal: mergedOptions.includeExternal,
+              excludePatterns:
+                typeof mergedOptions.excludePatterns === 'string'
+                  ? [mergedOptions.excludePatterns]
+                  : mergedOptions.excludePatterns
+            });
 
-        // Output the result
-        if (mergedOptions.output) {
-          fs.writeFileSync(mergedOptions.output, result);
-          console.log(`Dependency graph written to ${mergedOptions.output}`);
-        } else {
-          console.log(result);
+            // Output the result
+            if (mergedOptions.output) {
+              fs.writeFileSync(mergedOptions.output, result);
+              const timestamp = new Date().toLocaleTimeString();
+              console.log(`[${timestamp}] Dependency graph written to ${mergedOptions.output}`);
+            } else {
+              console.log(result);
+            }
+          } catch (error) {
+            console.error('Error analyzing project:', error);
+            if (!options.watch) {
+              process.exit(1);
+            }
+          }
+        };
+
+        // Run initial analysis
+        await runAnalysis();
+
+        // If watch mode is enabled, set up file watcher
+        if (options.watch) {
+          console.log(`\n👀  Watching for changes in ${rootDir}...`);
+          console.log('Press Ctrl+C to stop\n');
+
+          // Debounce timer
+          let debounceTimer: NodeJS.Timeout | null = null;
+          const debounceDelay = 300; // ms
+
+          const watcher = chokidar.watch(rootDir, {
+            ignored: [
+              '**/node_modules/**',
+              '**/.git/**',
+              '**/dist/**',
+              '**/build/**',
+              mergedOptions.output ? path.resolve(mergedOptions.output) : null
+            ].filter(Boolean) as string[],
+            persistent: true,
+            ignoreInitial: true
+          });
+
+          watcher.on('all', (event, changedPath) => {
+            // Only react to TypeScript/JavaScript files
+            if (!/\.(ts|tsx|js|jsx)$/.test(changedPath)) {
+              return;
+            }
+
+            // Debounce: clear existing timer and set a new one
+            if (debounceTimer) {
+              clearTimeout(debounceTimer);
+            }
+
+            debounceTimer = setTimeout(async () => {
+              const timestamp = new Date().toLocaleTimeString();
+              console.log(`\n[${timestamp}] File ${event}: ${path.relative(rootDir, changedPath)}`);
+              console.log('Regenerating...');
+              await runAnalysis();
+            }, debounceDelay);
+          });
+
+          // Handle graceful shutdown
+          process.on('SIGINT', () => {
+            console.log('\n\nStopping watcher...');
+            watcher.close();
+            process.exit(0);
+          });
         }
       } catch (error) {
         console.error('Error analyzing project:', error);
