@@ -22,7 +22,7 @@ export function formatAsTree(graph: DependencyGraph): string {
   lines.push('');
 
   // Statistics
-  lines.push('Statistics:');
+  lines.push('📊 Statistics:');
   lines.push(`  Total files: ${stats.totalFiles}`);
   lines.push(`  Total dependencies: ${stats.totalEdges}`);
   lines.push(`  Average dependencies per file: ${stats.averageDependencies.toFixed(2)}`);
@@ -33,6 +33,9 @@ export function formatAsTree(graph: DependencyGraph): string {
   if (stats.circularDependencies.length > 0) {
     lines.push('');
     lines.push(`  WARNING: ${stats.circularDependencies.length} circular dependencies detected!`);
+  } else {
+    lines.push('');
+    lines.push(`  ✅: No circular dependencies detected!`);
   }
 
   lines.push('');
@@ -164,7 +167,7 @@ function printDependencyTree(
 /**
  * Format import information for display
  */
-function formatImportInfo(imports: Array<{names: string[]; type: string; isTypeOnly: boolean}>): string {
+function formatImportInfo(imports: Array<{ names: string[]; type: string; isTypeOnly: boolean }>): string {
   if (imports.length === 0) return '';
 
   const parts: string[] = [];
