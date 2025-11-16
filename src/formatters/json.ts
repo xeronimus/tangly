@@ -1,6 +1,13 @@
 import {DependencyGraph} from '../types';
 import {getGraphStats} from '../graph';
 
+/**
+ * Normalize path to use forward slashes for cross-platform consistency
+ */
+function normalizePath(filePath: string): string {
+  return filePath.replace(/\\/g, '/');
+}
+
 interface JsonOutput {
   metadata: {
     rootDir: string;
@@ -37,24 +44,26 @@ export function formatAsJson(graph: DependencyGraph): string {
 
   const output: JsonOutput = {
     metadata: {
-      rootDir: graph.rootDir,
+      rootDir: normalizePath(graph.rootDir),
       totalFiles: stats.totalFiles,
       totalEdges: stats.totalEdges,
       averageDependencies: stats.averageDependencies,
       maxDependencies: stats.maxDependencies,
       filesWithNoDependencies: stats.filesWithNoDependencies,
       filesWithNoDependents: stats.filesWithNoDependents,
-      circularDependencies: stats.circularDependencies
+      circularDependencies: stats.circularDependencies.map((cycle) =>
+        cycle.map((filePath) => normalizePath(filePath))
+      )
     },
     nodes: Array.from(graph.nodes.values()).map((node) => ({
-      path: node.path,
-      relativePath: node.relativePath,
-      dependencies: node.dependencies,
-      dependents: node.dependents
+      path: normalizePath(node.path),
+      relativePath: normalizePath(node.relativePath),
+      dependencies: node.dependencies.map((dep) => normalizePath(dep)),
+      dependents: node.dependents.map((dep) => normalizePath(dep))
     })),
     edges: graph.edges.map((edge) => ({
-      from: edge.from,
-      to: edge.to,
+      from: normalizePath(edge.from),
+      to: normalizePath(edge.to),
       imports: edge.imports.map((imp) => ({
         names: imp.names,
         type: imp.type,

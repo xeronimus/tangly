@@ -2,6 +2,13 @@ import {DependencyGraph} from '../types';
 import {getGraphStats} from '../graph';
 
 /**
+ * Normalize path to use forward slashes for cross-platform consistency
+ */
+function normalizePath(filePath: string): string {
+  return filePath.replace(/\\/g, '/');
+}
+
+/**
  * Format dependency graph as a tree view for console output
  */
 export function formatAsTree(graph: DependencyGraph): string {
@@ -10,7 +17,7 @@ export function formatAsTree(graph: DependencyGraph): string {
 
   // Header
   lines.push('='.repeat(80));
-  lines.push(`Dependency Graph for: ${graph.rootDir}`);
+  lines.push(`Dependency Graph for: ${normalizePath(graph.rootDir)}`);
   lines.push('='.repeat(80));
   lines.push('');
 
@@ -34,14 +41,14 @@ export function formatAsTree(graph: DependencyGraph): string {
 
   // Show circular dependencies if any
   if (stats.circularDependencies.length > 0) {
-    lines.push('Circular Dependencies:');
+    lines.push(`Circular Dependencies: ${stats.circularDependencies.length}`);
     for (let i = 0; i < stats.circularDependencies.length; i++) {
       const cycle = stats.circularDependencies[i];
       lines.push(`  ${i + 1}. Cycle of ${cycle.length - 1} files:`);
       for (let j = 0; j < cycle.length; j++) {
         const node = graph.nodes.get(cycle[j]);
         const prefix = j === cycle.length - 1 ? '     └─>' : '     ├─>';
-        lines.push(`${prefix} ${node?.relativePath || cycle[j]}`);
+        lines.push(`${prefix} ${normalizePath(node?.relativePath || cycle[j])}`);
       }
     }
     lines.push('');
@@ -69,11 +76,11 @@ export function formatAsTree(graph: DependencyGraph): string {
 
   // Display root files (entry points)
   if (rootFiles.length > 0) {
-    lines.push('Entry Points (files with no dependents):');
+    lines.push(`Entry Points (files with no dependents): ${rootFiles.length}`);
     for (const filePath of rootFiles) {
       const node = graph.nodes.get(filePath)!;
-      lines.push(`  ${node.relativePath} (${node.dependencies.length} dependencies)`);
-      printDependencyTree(graph, filePath, lines, '    ', new Set());
+      lines.push(`  ${normalizePath(node.relativePath)} (${node.dependencies.length} dependencies)`);
+      printDependencyTree(graph, filePath, lines, '    ', new Set(), 7);
       lines.push('');
     }
     lines.push('-'.repeat(80));
@@ -85,7 +92,7 @@ export function formatAsTree(graph: DependencyGraph): string {
     lines.push('Leaf Files (files with no dependencies):');
     for (const filePath of leafFiles) {
       const node = graph.nodes.get(filePath)!;
-      lines.push(`  ${node.relativePath} (${node.dependents.length} dependents)`);
+      lines.push(`  ${normalizePath(node.relativePath)} (${node.dependents.length} dependents)`);
     }
     lines.push('');
     lines.push('-'.repeat(80));
@@ -97,7 +104,7 @@ export function formatAsTree(graph: DependencyGraph): string {
     lines.push('Isolated Files (no dependencies or dependents):');
     for (const filePath of isolatedFiles) {
       const node = graph.nodes.get(filePath)!;
-      lines.push(`  ${node.relativePath}`);
+      lines.push(`  ${normalizePath(node.relativePath)}`);
     }
     lines.push('');
   }
@@ -144,7 +151,7 @@ function printDependencyTree(
     const edge = graph.edges.find((e) => e.from === filePath && e.to === depPath);
     const importInfo = edge ? formatImportInfo(edge.imports) : '';
 
-    lines.push(`${prefix}${connector} ${depNode.relativePath}${importInfo}`);
+    lines.push(`${prefix}${connector} ${normalizePath(depNode.relativePath)}${importInfo}`);
 
     if (!visited.has(depPath)) {
       printDependencyTree(graph, depPath, lines, nextPrefix, visited, maxDepth, currentDepth + 1);
