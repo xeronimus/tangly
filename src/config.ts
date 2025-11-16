@@ -50,6 +50,20 @@ export function readConfigFile(configPath: string): ConfigFile {
     validatedConfig.includeExternal = config.includeExternal;
   }
 
+  // Validate exclude (can be string or array of strings)
+  if (config.exclude !== undefined) {
+    if (typeof config.exclude === 'string') {
+      validatedConfig.exclude = [config.exclude];
+    } else if (Array.isArray(config.exclude)) {
+      if (!config.exclude.every((pattern: any) => typeof pattern === 'string')) {
+        throw new Error(`Invalid exclude in config file: all patterns must be strings`);
+      }
+      validatedConfig.exclude = config.exclude;
+    } else {
+      throw new Error(`Invalid exclude in config file: must be a string or array of strings`);
+    }
+  }
+
   return validatedConfig;
 }
 
@@ -68,10 +82,12 @@ export function mergeOptions(
   format: OutputFormat;
   output?: string;
   includeExternal: boolean;
+  excludePatterns?: string | string[];
 } {
   return {
     format: (cliOptions.format as OutputFormat) || configOptions.format || 'json',
     output: cliOptions.output || configOptions.output,
-    includeExternal: cliOptions.includeExternal ?? configOptions.includeExternal ?? false
+    includeExternal: cliOptions.includeExternal ?? configOptions.includeExternal ?? false,
+    excludePatterns: configOptions.exclude
   };
 }

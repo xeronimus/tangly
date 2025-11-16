@@ -6,8 +6,12 @@ import * as path from 'path';
 /**
  * Build a dependency graph from a project directory
  */
-export function buildDependencyGraph(rootDir: string, includeExternal: boolean = false): DependencyGraph {
-  const files = findTypeScriptFiles(rootDir, includeExternal);
+export function buildDependencyGraph(
+  rootDir: string,
+  includeExternal: boolean = false,
+  excludePatterns?: string[]
+): DependencyGraph {
+  const files = findTypeScriptFiles(rootDir, includeExternal, excludePatterns);
   const nodes = new Map<string, GraphNode>();
   const edges: DependencyEdge[] = [];
 

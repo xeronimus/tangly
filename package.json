@@ -11,7 +11,7 @@
     "start": "node dist/cli.js",
     "dev": "ts-node src/cli.ts",
     "format": "prettier --write .",
-    "ft": "npm run format && npm t",
+    "ft": "npm run format && npm run build && npm t",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

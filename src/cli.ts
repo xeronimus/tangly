@@ -71,7 +71,11 @@ program
           rootDir,
           format,
           output: mergedOptions.output,
-          includeExternal: mergedOptions.includeExternal
+          includeExternal: mergedOptions.includeExternal,
+          excludePatterns:
+            typeof mergedOptions.excludePatterns === 'string'
+              ? [mergedOptions.excludePatterns]
+              : mergedOptions.excludePatterns
         });
 
         // Output the result

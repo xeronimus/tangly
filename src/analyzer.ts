@@ -8,10 +8,10 @@ import {formatAsTree} from './formatters/tree';
  * Main analyzer function
  */
 export async function analyzeProject(options: AnalyzerOptions): Promise<string> {
-  const {rootDir, format, includeExternal = false} = options;
+  const {rootDir, format, includeExternal = false, excludePatterns} = options;
 
   // Build the dependency graph
-  const graph = buildDependencyGraph(rootDir, includeExternal);
+  const graph = buildDependencyGraph(rootDir, includeExternal, excludePatterns);
 
   // Format the output based on the requested format
   switch (format) {

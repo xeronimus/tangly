@@ -4,11 +4,18 @@ import * as path from 'path';
 /**
  * Recursively find all .ts and .tsx files in a directory
  */
-export function findTypeScriptFiles(rootDir: string, includeExternal: boolean = false): string[] {
+export function findTypeScriptFiles(
+  rootDir: string,
+  includeExternal: boolean = false,
+  excludePatterns?: string[]
+): string[] {
   const results: string[] = [];
   const excludedDirs = includeExternal
     ? ['node_modules/.', 'dist', 'build', 'coverage', '.git']
     : ['node_modules', 'dist', 'build', 'coverage', '.git'];
+
+  // Compile regex patterns
+  const excludeRegexes = excludePatterns?.map((pattern) => new RegExp(pattern)) || [];
 
   function traverse(currentPath: string): void {
     try {
@@ -40,7 +47,15 @@ export function findTypeScriptFiles(rootDir: string, includeExternal: boolean = 
 
         // Include .ts and .tsx files, but exclude .d.ts files
         if ((ext === '.ts' || ext === '.tsx') && !currentPath.endsWith('.d.ts')) {
-          results.push(currentPath);
+          // Check if file matches any exclude pattern
+          const relativePath = path.relative(rootDir, currentPath);
+          // Normalize path to use forward slashes for cross-platform regex matching
+          const normalizedPath = relativePath.replace(/\\/g, '/');
+          const isExcluded = excludeRegexes.some((regex) => regex.test(normalizedPath));
+
+          if (!isExcluded) {
+            results.push(currentPath);
+          }
         }
       }
     } catch (error) {

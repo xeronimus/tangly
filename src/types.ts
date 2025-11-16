@@ -53,6 +53,8 @@ export interface AnalyzerOptions {
   output?: string;
   /** Whether to include external dependencies (node_modules, etc.) */
   includeExternal?: boolean;
+  /** Regex patterns to exclude files from analysis */
+  excludePatterns?: string[];
 }
 
 export interface ConfigFile {
@@ -62,4 +64,6 @@ export interface ConfigFile {
   output?: string;
   /** Whether to include external dependencies */
   includeExternal?: boolean;
+  /** Regex patterns to exclude files from analysis (string or array of strings) */
+  exclude?: string | string[];
 }
