@@ -99,7 +99,7 @@ export function formatAsHtml(graph: ProjectGraph): string {
     }
 
     .tree li.directory.selected::before {
-      content: '📂 ';
+      content: '🔶 📂 ';
     }
 
     .tree li.file.entry-point {
@@ -206,7 +206,7 @@ export function formatAsHtml(graph: ProjectGraph): string {
     if (dirNode.path !== graph.rootDir) {
       const dirLabel = path.basename(dirNode.path);
       lines.push(
-        `${indentStr}<li class="directory" data-folder-path="${escapeHtml(normalizePath(dirNode.path))}">${escapeHtml(dirLabel)}/`
+        `${indentStr}<li class="directory" data-folder-path="${escapeHtml(normalizePath(dirNode.path))}"><span>${escapeHtml(dirLabel)}/</span>`
       );
       if (filesInDir.length > 0 || dirNode.children.length > 0) {
         lines.push(`${indentStr}  <ol>`);
@@ -318,9 +318,9 @@ export function formatAsHtml(graph: ProjectGraph): string {
   lines.push('        const toRect = toEl.getBoundingClientRect();');
   lines.push('');
   lines.push('        const x1 = fromRect.left - containerRect.left + fromRect.width;');
-  lines.push('        const y1 = fromRect.top - containerRect.top + fromRect.height / 2;');
-  lines.push('        const x2 = toRect.left - containerRect.left;');
-  lines.push('        const y2 = toRect.top - containerRect.top + toRect.height / 2;');
+  lines.push('        const y1 = fromRect.top - containerRect.top + 2  ;');
+  lines.push('        const x2 = toRect.left - containerRect.left + toRect.width;');
+  lines.push('        const y2 = toRect.top - containerRect.top + toRect.height - 2;');
   lines.push('');
   lines.push('        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");');
   lines.push('');
