@@ -1,36 +1,45 @@
-import {DependencyGraph, GraphNode, DependencyEdge} from './types';
+import {ProjectGraph, GraphNode, ImportEdge, HierarchyEdge} from './types';
 import {findTypeScriptFiles, getRelativePath} from './fileDiscovery';
 import {parseImports} from './parser';
 import * as path from 'path';
 
 /**
- * Build a dependency graph from a project directory
+ * Build a project graph from a project directory
  */
-export function buildDependencyGraph(
+export function buildProjectGraph(
   rootDir: string,
   includeExternal: boolean = false,
   excludePatterns?: string[]
-): DependencyGraph {
+): ProjectGraph {
   const files = findTypeScriptFiles(rootDir, includeExternal, excludePatterns);
   const nodes = new Map<string, GraphNode>();
-  const edges: DependencyEdge[] = [];
+  const importEdges: ImportEdge[] = [];
+  const hierarchyEdges: HierarchyEdge[] = [];
 
   // Initialize nodes for all files
   for (const filePath of files) {
+    const parentDir = path.dirname(filePath);
     nodes.set(filePath, {
       path: filePath,
       relativePath: getRelativePath(rootDir, filePath),
       dependencies: [],
-      dependents: []
+      dependents: [],
+      parent: parentDir
+    });
+
+    // Create hierarchy edge for this file
+    hierarchyEdges.push({
+      parent: parentDir,
+      child: filePath
     });
   }
 
   // Parse imports and build edges
   for (const filePath of files) {
-    const imports = parseImports(filePath, rootDir);
+    const imports = parseImports(filePath);
 
     for (const importInfo of imports) {
-      const {resolvedPath, moduleSpecifier, details} = importInfo;
+      const {resolvedPath, details} = importInfo;
 
       // Skip external dependencies if not included
       if (!includeExternal && !resolvedPath) {
@@ -50,15 +59,15 @@ export function buildDependencyGraph(
           toNode.dependents.push(filePath);
         }
 
-        // Create or update edge
-        let edge = edges.find((e) => e.from === filePath && e.to === resolvedPath);
+        // Create or update import edge
+        let edge = importEdges.find((e) => e.from === filePath && e.to === resolvedPath);
         if (!edge) {
           edge = {
             from: filePath,
             to: resolvedPath,
             imports: []
           };
-          edges.push(edge);
+          importEdges.push(edge);
         }
         edge.imports.push(details);
       } else if (includeExternal && !resolvedPath) {
@@ -71,15 +80,16 @@ export function buildDependencyGraph(
 
   return {
     nodes,
-    edges,
+    importEdges,
+    hierarchyEdges,
     rootDir
   };
 }
 
 /**
- * Get statistics about the dependency graph
+ * Get statistics about the project graph
  */
-export function getGraphStats(graph: DependencyGraph): {
+export function getGraphStats(graph: ProjectGraph): {
   totalFiles: number;
   totalEdges: number;
   averageDependencies: number;
@@ -89,7 +99,7 @@ export function getGraphStats(graph: DependencyGraph): {
   circularDependencies: string[][];
 } {
   const totalFiles = graph.nodes.size;
-  const totalEdges = graph.edges.length;
+  const totalEdges = graph.importEdges.length;
 
   let maxDependencies = 0;
   let filesWithNoDependencies = 0;
@@ -130,7 +140,7 @@ export function getGraphStats(graph: DependencyGraph): {
 /**
  * Find circular dependencies in the graph using DFS
  */
-function findCircularDependencies(graph: DependencyGraph): string[][] {
+function findCircularDependencies(graph: ProjectGraph): string[][] {
   const cycles: string[][] = [];
   const visited = new Set<string>();
   const recursionStack = new Set<string>();

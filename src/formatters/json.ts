@@ -1,4 +1,4 @@
-import {DependencyGraph} from '../types';
+import {ProjectGraph} from '../types';
 import {getGraphStats} from '../graph';
 
 /**
@@ -24,8 +24,9 @@ interface JsonOutput {
     relativePath: string;
     dependencies: string[];
     dependents: string[];
+    parent?: string;
   }>;
-  edges: Array<{
+  importEdges: Array<{
     from: string;
     to: string;
     imports: Array<{
@@ -34,12 +35,16 @@ interface JsonOutput {
       isTypeOnly: boolean;
     }>;
   }>;
+  hierarchyEdges: Array<{
+    parent: string;
+    child: string;
+  }>;
 }
 
 /**
- * Format dependency graph as JSON
+ * Format project graph as JSON
  */
-export function formatAsJson(graph: DependencyGraph): string {
+export function formatAsJson(graph: ProjectGraph): string {
   const stats = getGraphStats(graph);
 
   const output: JsonOutput = {
@@ -51,17 +56,16 @@ export function formatAsJson(graph: DependencyGraph): string {
       maxDependencies: stats.maxDependencies,
       filesWithNoDependencies: stats.filesWithNoDependencies,
       filesWithNoDependents: stats.filesWithNoDependents,
-      circularDependencies: stats.circularDependencies.map((cycle) =>
-        cycle.map((filePath) => normalizePath(filePath))
-      )
+      circularDependencies: stats.circularDependencies.map((cycle) => cycle.map((filePath) => normalizePath(filePath)))
     },
     nodes: Array.from(graph.nodes.values()).map((node) => ({
       path: normalizePath(node.path),
       relativePath: normalizePath(node.relativePath),
       dependencies: node.dependencies.map((dep) => normalizePath(dep)),
-      dependents: node.dependents.map((dep) => normalizePath(dep))
+      dependents: node.dependents.map((dep) => normalizePath(dep)),
+      parent: node.parent ? normalizePath(node.parent) : undefined
     })),
-    edges: graph.edges.map((edge) => ({
+    importEdges: graph.importEdges.map((edge) => ({
       from: normalizePath(edge.from),
       to: normalizePath(edge.to),
       imports: edge.imports.map((imp) => ({
@@ -69,6 +73,10 @@ export function formatAsJson(graph: DependencyGraph): string {
         type: imp.type,
         isTypeOnly: imp.isTypeOnly
       }))
+    })),
+    hierarchyEdges: graph.hierarchyEdges.map((edge) => ({
+      parent: normalizePath(edge.parent),
+      child: normalizePath(edge.child)
     }))
   };
 

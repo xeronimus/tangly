@@ -3,7 +3,7 @@
  */
 
 export {analyzeProject} from './analyzer';
-export {buildDependencyGraph, getGraphStats} from './graph';
+export {buildProjectGraph, getGraphStats} from './graph';
 export {findTypeScriptFiles, getRelativePath} from './fileDiscovery';
 export {parseImports} from './parser';
 export {formatAsJson} from './formatters/json';

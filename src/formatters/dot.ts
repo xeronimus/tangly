@@ -1,13 +1,12 @@
-import {DependencyGraph} from '../types';
-import * as path from 'path';
+import {ProjectGraph} from '../types';
 
 /**
- * Format dependency graph as DOT (Graphviz) format
+ * Format project graph as DOT (Graphviz) format
  */
-export function formatAsDot(graph: DependencyGraph): string {
+export function formatAsDot(graph: ProjectGraph): string {
   const lines: string[] = [];
 
-  lines.push('digraph DependencyGraph {');
+  lines.push('digraph ProjectGraph {');
   lines.push('  rankdir=LR;');
   lines.push('  node [shape=box, style=rounded];');
   lines.push('');
@@ -41,8 +40,8 @@ export function formatAsDot(graph: DependencyGraph): string {
 
   lines.push('');
 
-  // Add edges
-  for (const edge of graph.edges) {
+  // Add import edges
+  for (const edge of graph.importEdges) {
     const fromId = nodeIds.get(edge.from);
     const toId = nodeIds.get(edge.to);
 

@@ -15,7 +15,7 @@ export interface ParsedImport {
 /**
  * Parse all imports from a TypeScript file
  */
-export function parseImports(filePath: string, rootDir: string): ParsedImport[] {
+export function parseImports(filePath: string): ParsedImport[] {
   const sourceCode = fs.readFileSync(filePath, 'utf-8');
   const sourceFile = ts.createSourceFile(filePath, sourceCode, ts.ScriptTarget.Latest, true);
 
@@ -31,7 +31,7 @@ export function parseImports(filePath: string, rootDir: string): ParsedImport[] 
         // Side-effect import: import 'module'
         imports.push({
           moduleSpecifier,
-          resolvedPath: resolveImportPath(moduleSpecifier, filePath, rootDir),
+          resolvedPath: resolveImportPath(moduleSpecifier, filePath),
           details: {
             names: [],
             type: 'side-effect',
@@ -71,7 +71,7 @@ export function parseImports(filePath: string, rootDir: string): ParsedImport[] 
 
       imports.push({
         moduleSpecifier,
-        resolvedPath: resolveImportPath(moduleSpecifier, filePath, rootDir),
+        resolvedPath: resolveImportPath(moduleSpecifier, filePath),
         details: {
           names,
           type: importType,
@@ -94,7 +94,7 @@ export function parseImports(filePath: string, rootDir: string): ParsedImport[] 
 
       imports.push({
         moduleSpecifier,
-        resolvedPath: resolveImportPath(moduleSpecifier, filePath, rootDir),
+        resolvedPath: resolveImportPath(moduleSpecifier, filePath),
         details: {
           names,
           type: isTypeOnly ? 'type' : 'named',
@@ -109,7 +109,7 @@ export function parseImports(filePath: string, rootDir: string): ParsedImport[] 
         const moduleSpecifier = node.arguments[0].text;
         imports.push({
           moduleSpecifier,
-          resolvedPath: resolveImportPath(moduleSpecifier, filePath, rootDir),
+          resolvedPath: resolveImportPath(moduleSpecifier, filePath),
           details: {
             names: [],
             type: 'namespace',
@@ -129,7 +129,7 @@ export function parseImports(filePath: string, rootDir: string): ParsedImport[] 
 /**
  * Resolve import path to absolute file path
  */
-function resolveImportPath(moduleSpecifier: string, fromFile: string, rootDir: string): string | undefined {
+function resolveImportPath(moduleSpecifier: string, fromFile: string): string | undefined {
   // Skip external modules (those that don't start with . or /)
   if (!moduleSpecifier.startsWith('.') && !moduleSpecifier.startsWith('/')) {
     return undefined;

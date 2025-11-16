@@ -13,13 +13,20 @@ export interface ImportDetail {
   isTypeOnly: boolean;
 }
 
-export interface DependencyEdge {
+export interface ImportEdge {
   /** Source file (the file doing the importing) */
   from: string;
   /** Target file (the file being imported) */
   to: string;
   /** Details about the imports */
   imports: ImportDetail[];
+}
+
+export interface HierarchyEdge {
+  /** Parent directory path */
+  parent: string;
+  /** Child file path */
+  child: string;
 }
 
 export interface GraphNode {
@@ -31,13 +38,17 @@ export interface GraphNode {
   dependencies: string[];
   /** Files that import this node (incoming edges) */
   dependents: string[];
+  /** Parent directory path */
+  parent?: string;
 }
 
-export interface DependencyGraph {
+export interface ProjectGraph {
   /** Map of file path to graph node */
   nodes: Map<string, GraphNode>;
-  /** List of all dependency edges with import details */
-  edges: DependencyEdge[];
+  /** Import dependency edges with details */
+  importEdges: ImportEdge[];
+  /** File system hierarchy edges */
+  hierarchyEdges: HierarchyEdge[];
   /** Root directory of the analyzed project */
   rootDir: string;
 }

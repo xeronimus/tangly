@@ -1,4 +1,4 @@
-import {DependencyGraph} from '../types';
+import {ProjectGraph} from '../types';
 import {getGraphStats} from '../graph';
 
 /**
@@ -9,9 +9,9 @@ function normalizePath(filePath: string): string {
 }
 
 /**
- * Format dependency graph as a tree view for console output
+ * Format project graph as a tree view for console output
  */
-export function formatAsTree(graph: DependencyGraph): string {
+export function formatAsTree(graph: ProjectGraph): string {
   const lines: string[] = [];
   const stats = getGraphStats(graph);
 
@@ -119,7 +119,7 @@ export function formatAsTree(graph: DependencyGraph): string {
  * Print dependency tree recursively
  */
 function printDependencyTree(
-  graph: DependencyGraph,
+  graph: ProjectGraph,
   filePath: string,
   lines: string[],
   prefix: string,
@@ -151,7 +151,7 @@ function printDependencyTree(
     const nextPrefix = prefix + (isLast ? '    ' : '│   ');
 
     // Get import details
-    const edge = graph.edges.find((e) => e.from === filePath && e.to === depPath);
+    const edge = graph.importEdges.find((e) => e.from === filePath && e.to === depPath);
     const importInfo = edge ? formatImportInfo(edge.imports) : '';
 
     lines.push(`${prefix}${connector} ${normalizePath(depNode.relativePath)}${importInfo}`);
@@ -167,7 +167,7 @@ function printDependencyTree(
 /**
  * Format import information for display
  */
-function formatImportInfo(imports: Array<{ names: string[]; type: string; isTypeOnly: boolean }>): string {
+function formatImportInfo(imports: Array<{names: string[]; type: string; isTypeOnly: boolean}>): string {
   if (imports.length === 0) return '';
 
   const parts: string[] = [];
