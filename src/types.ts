@@ -54,3 +54,12 @@ export interface AnalyzerOptions {
   /** Whether to include external dependencies (node_modules, etc.) */
   includeExternal?: boolean;
 }
+
+export interface ConfigFile {
+  /** Output format */
+  format?: OutputFormat;
+  /** Output file path */
+  output?: string;
+  /** Whether to include external dependencies */
+  includeExternal?: boolean;
+}

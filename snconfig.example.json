@@ -1,0 +1,13 @@
+{
+  "_comment": "Spidernet configuration file example",
+  "_usage": "Copy this file to snconfig.json and customize as needed",
+
+  "_comment_format": "Output format: 'json', 'dot' (Graphviz), or 'tree' (console tree view)",
+  "format": "tree",
+
+  "_comment_output": "Output file path. If omitted, output goes to stdout",
+  "output": "dependency-graph.txt",
+
+  "_comment_includeExternal": "Set to true to include external dependencies from node_modules",
+  "includeExternal": false
+}

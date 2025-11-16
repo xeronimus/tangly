@@ -7,6 +7,9 @@ dist/
 # Generated test files
 dependency-graph.*
 
+# Config files (keep example)
+snconfig.json
+
 # IDE
 .idea/
 .vscode/
