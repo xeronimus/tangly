@@ -109,28 +109,12 @@ export function formatAsHtml(graph: ProjectGraph): string {
     }
 
     .dependency-line {
-      stroke-width: 2;
-      fill: none;
-      opacity: 0.5;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, stroke-width 0.2s;
     }
 
     .dependency-line:hover {
-      opacity: 1;
-      stroke-width: 3;
-    }
-
-    .import-regular {
-      stroke: #d32f2f;
-    }
-
-    .import-type {
-      stroke: #1976d2;
-    }
-
-    .import-side-effect {
-      stroke: #f57c00;
-      stroke-dasharray: 5,5;
+      opacity: 1 !important;
+      stroke-width: 3 !important;
     }
 
     .legend {
@@ -297,6 +281,12 @@ export function formatAsHtml(graph: ProjectGraph): string {
   lines.push('      svg.setAttribute("width", containerRect.width);');
   lines.push('      svg.setAttribute("height", containerRect.height);');
   lines.push('');
+  lines.push('      // Create defs section for gradients');
+  lines.push('      const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");');
+  lines.push('      svg.appendChild(defs);');
+  lines.push('');
+  lines.push('      let gradientCounter = 0;');
+  lines.push('');
   lines.push('      edges.forEach(edge => {');
   lines.push('        const fromEl = document.querySelector(`[data-file-path="${edge.from}"] span`);');
   lines.push('        const toEl = document.querySelector(`[data-file-path="${edge.to}"] span`);');
@@ -335,7 +325,51 @@ export function formatAsHtml(graph: ProjectGraph): string {
   );
   lines.push('');
   lines.push('        path.setAttribute("d", d);');
-  lines.push('        path.setAttribute("class", "dependency-line " + edge.class);');
+  lines.push('');
+  lines.push('        // Create gradient from source to target using actual coordinates');
+  lines.push('        const gradientId = `gradient${gradientCounter++}`;');
+  lines.push('        const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");');
+  lines.push('        gradient.setAttribute("id", gradientId);');
+  lines.push('        gradient.setAttribute("gradientUnits", "userSpaceOnUse");');
+  lines.push('        gradient.setAttribute("x1", x1);');
+  lines.push('        gradient.setAttribute("y1", y1);');
+  lines.push('        gradient.setAttribute("x2", x2);');
+  lines.push('        gradient.setAttribute("y2", y2);');
+  lines.push('');
+  lines.push('        // Define colors based on edge type - contrasting hues');
+  lines.push('        let startColor, endColor;');
+  lines.push('        if (edge.class === "import-type") {');
+  lines.push('          startColor = "#9c27b0"; // Purple');
+  lines.push('          endColor = "#00e676";   // Green');
+  lines.push('        } else if (edge.class === "import-side-effect") {');
+  lines.push('          startColor = "#ff6f00"; // Orange');
+  lines.push('          endColor = "#2196f3";   // Blue');
+  lines.push('        } else {');
+  lines.push('          startColor = "#e91e63"; // Magenta/Pink');
+  lines.push('          endColor = "#00bcd4";   // Cyan');
+  lines.push('        }');
+  lines.push('');
+  lines.push('        const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");');
+  lines.push('        stop1.setAttribute("offset", "0%");');
+  lines.push('        stop1.setAttribute("style", `stop-color:${startColor};stop-opacity:1`);');
+  lines.push('');
+  lines.push('        const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");');
+  lines.push('        stop2.setAttribute("offset", "100%");');
+  lines.push('        stop2.setAttribute("style", `stop-color:${endColor};stop-opacity:1`);');
+  lines.push('');
+  lines.push('        gradient.appendChild(stop1);');
+  lines.push('        gradient.appendChild(stop2);');
+  lines.push('        defs.appendChild(gradient);');
+  lines.push('');
+  lines.push('        // Use gradient for stroke');
+  lines.push('        path.setAttribute("stroke", `url(#${gradientId})`);');
+  lines.push('        path.setAttribute("stroke-width", "2");');
+  lines.push('        path.setAttribute("fill", "none");');
+  lines.push('        path.setAttribute("opacity", "0.6");');
+  lines.push('        if (edge.class === "import-side-effect") {');
+  lines.push('          path.setAttribute("stroke-dasharray", "5,5");');
+  lines.push('        }');
+  lines.push('        path.setAttribute("class", "dependency-line");');
   lines.push('');
   lines.push('        const title = document.createElementNS("http://www.w3.org/2000/svg", "title");');
   lines.push('        title.textContent = `${edge.from} → ${edge.to}`;');
