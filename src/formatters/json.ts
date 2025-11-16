@@ -35,10 +35,6 @@ interface JsonOutput {
       isTypeOnly: boolean;
     }>;
   }>;
-  hierarchyEdges: Array<{
-    parent: string;
-    child: string;
-  }>;
 }
 
 /**
@@ -73,10 +69,6 @@ export function formatAsJson(graph: ProjectGraph): string {
         type: imp.type,
         isTypeOnly: imp.isTypeOnly
       }))
-    })),
-    hierarchyEdges: graph.hierarchyEdges.map((edge) => ({
-      parent: normalizePath(edge.parent),
-      child: normalizePath(edge.child)
     }))
   };
 

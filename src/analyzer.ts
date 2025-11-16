@@ -2,6 +2,7 @@ import {AnalyzerOptions} from './types';
 import {buildProjectGraph} from './graph';
 import {formatAsJson} from './formatters/json';
 import {formatAsDot} from './formatters/dot';
+import {formatAsDotHierarchy} from './formatters/dotHierarchy';
 import {formatAsTree} from './formatters/tree';
 
 /**
@@ -19,6 +20,8 @@ export async function analyzeProject(options: AnalyzerOptions): Promise<string> 
       return formatAsJson(graph);
     case 'dot':
       return formatAsDot(graph);
+    case 'dot-hierarchy':
+      return formatAsDotHierarchy(graph);
     case 'tree':
       return formatAsTree(graph);
     default:

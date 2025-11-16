@@ -22,13 +22,6 @@ export interface ImportEdge {
   imports: ImportDetail[];
 }
 
-export interface HierarchyEdge {
-  /** Parent directory path */
-  parent: string;
-  /** Child file path */
-  child: string;
-}
-
 export interface GraphNode {
   /** Absolute path to the file */
   path: string;
@@ -47,13 +40,11 @@ export interface ProjectGraph {
   nodes: Map<string, GraphNode>;
   /** Import dependency edges with details */
   importEdges: ImportEdge[];
-  /** File system hierarchy edges */
-  hierarchyEdges: HierarchyEdge[];
   /** Root directory of the analyzed project */
   rootDir: string;
 }
 
-export type OutputFormat = 'json' | 'dot' | 'tree';
+export type OutputFormat = 'json' | 'dot' | 'dot-hierarchy' | 'tree';
 
 export interface AnalyzerOptions {
   /** Root directory to analyze */

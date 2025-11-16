@@ -1,4 +1,4 @@
-import {ProjectGraph, GraphNode, ImportEdge, HierarchyEdge} from './types';
+import {ProjectGraph, GraphNode, ImportEdge} from './types';
 import {findTypeScriptFiles, getRelativePath} from './fileDiscovery';
 import {parseImports} from './parser';
 import * as path from 'path';
@@ -14,7 +14,6 @@ export function buildProjectGraph(
   const files = findTypeScriptFiles(rootDir, includeExternal, excludePatterns);
   const nodes = new Map<string, GraphNode>();
   const importEdges: ImportEdge[] = [];
-  const hierarchyEdges: HierarchyEdge[] = [];
 
   // Initialize nodes for all files
   for (const filePath of files) {
@@ -25,12 +24,6 @@ export function buildProjectGraph(
       dependencies: [],
       dependents: [],
       parent: parentDir
-    });
-
-    // Create hierarchy edge for this file
-    hierarchyEdges.push({
-      parent: parentDir,
-      child: filePath
     });
   }
 
@@ -81,7 +74,6 @@ export function buildProjectGraph(
   return {
     nodes,
     importEdges,
-    hierarchyEdges,
     rootDir
   };
 }
