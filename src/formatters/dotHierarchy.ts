@@ -2,20 +2,23 @@ import {ProjectGraph} from '../types';
 import * as path from 'path';
 
 /**
- * Format project graph as hierarchical DOT (Graphviz) format
- * Files are positioned according to their directory structure
+ * Format project graph as hierarchical DOT (Graphviz) format using invisible point nodes
+ * Creates a clean tree structure showing file hierarchy with import dependencies overlaid
  */
 export function formatAsDotHierarchy(graph: ProjectGraph): string {
   const lines: string[] = [];
 
   lines.push('digraph ProjectGraph {');
-  lines.push('  rankdir=TB;');
-  lines.push('  compound=true;');
+  lines.push('  rankdir=LR;');
+  lines.push('  ranksep=1;');
+  lines.push('  nodesep=0.5;');
   lines.push('  node [shape=box, style=rounded];');
   lines.push('');
 
   // Create a map of file paths to node IDs
   const nodeIds = new Map<string, string>();
+  let nodeCounter = 0;
+  let dotCounter = 0;
 
   // Group files by their parent directory
   const dirToFiles = new Map<string, string[]>();
@@ -31,10 +34,93 @@ export function formatAsDotHierarchy(graph: ProjectGraph): string {
   const allDirs = new Set(dirToFiles.keys());
   const dirTree = buildDirectoryTree(Array.from(allDirs), graph.rootDir);
 
-  // Generate clusters recursively
-  generateClusters(dirTree, graph, nodeIds, lines, 0);
+  // Generate file nodes (all at once, so they can be referenced)
+  for (const node of graph.nodes.values()) {
+    const nodeId = `n${nodeCounter++}`;
+    nodeIds.set(node.path, nodeId);
+
+    const fileName = path.basename(node.path);
+
+    // Color nodes based on their role
+    let fillcolor = 'lightblue';
+    if (node.dependencies.length === 0 && node.dependents.length > 0) {
+      fillcolor = 'lightgreen'; // Leaf nodes
+    } else if (node.dependents.length === 0 && node.dependencies.length > 0) {
+      fillcolor = 'lightyellow'; // Entry points
+    } else if (node.dependencies.length === 0 && node.dependents.length === 0) {
+      fillcolor = 'lightgray'; // Isolated
+    }
+
+    lines.push(`  ${nodeId} [label="${escapeLabel(fileName)}", fillcolor="${fillcolor}", style="filled,rounded"];`);
+  }
 
   lines.push('');
+
+  // Generate directory hierarchy using invisible point nodes
+  function generateHierarchy(dirNode: DirNode, parentDotId?: string): void {
+    const filesInDir = Array.from(graph.nodes.values()).filter(
+      (node) => (node.parent || graph.rootDir) === dirNode.path
+    );
+    const children = [
+      ...filesInDir.map((f) => ({type: 'file' as const, node: f})),
+      ...dirNode.children.map((d) => ({type: 'dir' as const, node: d}))
+    ];
+
+    if (children.length === 0) return;
+
+    // Create directory label node (optional, using invisible point for now)
+    const dirLabelId = `dir_${dirNode.path.replace(/[^a-zA-Z0-9]/g, '_')}`;
+    const dirLabel = normalizePath(path.relative(graph.rootDir, dirNode.path)) || '.';
+
+    // For root or when we have a parent connection, create a visible directory node
+    if (dirNode.path === graph.rootDir || parentDotId) {
+      lines.push(
+        `  ${dirLabelId} [label="${escapeLabel(dirLabel)}/", shape=folder, fillcolor="#f0f0f0", style="filled"];`
+      );
+    }
+
+    // Create invisible dot nodes for branching (one per child)
+    const dotIds: string[] = [];
+    for (let i = 0; i < children.length; i++) {
+      const dotId = `dot${dotCounter++}`;
+      dotIds.push(dotId);
+      lines.push(`  ${dotId} [shape=point, width=0];`);
+    }
+
+    // Group dots at same rank
+    if (dotIds.length > 0) {
+      lines.push(`  {rank=same; ${dirLabelId}; ${dotIds.join('; ')}}`);
+
+      // Connect directory label to dots horizontally (no arrows)
+      const dotChain = [dirLabelId, ...dotIds].join(' -> ');
+      lines.push(`  ${dotChain} [arrowhead=none];`);
+    }
+
+    // Connect dots to children (files or subdirectories)
+    children.forEach((child, i) => {
+      const dotId = dotIds[i];
+
+      if (child.type === 'file') {
+        const fileNodeId = nodeIds.get(child.node.path);
+        if (fileNodeId) {
+          lines.push(`  ${dotId} -> ${fileNodeId} [weight=20, arrowhead=none];`);
+        }
+      } else {
+        // Recurse into subdirectory
+        generateHierarchy(child.node, dotId);
+      }
+    });
+
+    // Connect parent dot to this directory label
+    if (parentDotId) {
+      lines.push(`  ${parentDotId} -> ${dirLabelId} [weight=20, arrowhead=none];`);
+    }
+
+    lines.push('');
+  }
+
+  // Generate the hierarchy starting from root
+  generateHierarchy(dirTree);
 
   // Add import edges
   for (const edge of graph.importEdges) {
@@ -56,7 +142,7 @@ export function formatAsDotHierarchy(graph: ProjectGraph): string {
     }
 
     const label = importLabels.length > 0 ? importLabels.join('\\n') : '';
-    const color = edge.imports.some((imp) => imp.isTypeOnly) ? 'blue' : 'black';
+    const color = edge.imports.some((imp) => imp.isTypeOnly) ? 'blue' : 'red';
     const style = edge.imports.some((imp) => imp.type === 'side-effect') ? 'dashed' : 'solid';
 
     lines.push(`  ${fromId} -> ${toId} [label="${escapeLabel(label)}", color="${color}", style="${style}"];`);
@@ -114,59 +200,6 @@ function buildDirectoryTree(dirPaths: string[], rootDir: string): DirNode {
   }
 
   return root;
-}
-
-/**
- * Generate DOT clusters recursively
- */
-function generateClusters(
-  dirNode: DirNode,
-  graph: ProjectGraph,
-  nodeIds: Map<string, string>,
-  lines: string[],
-  depth: number
-): void {
-  const indent = '  '.repeat(depth + 1);
-  const clusterName = `cluster_${dirNode.path.replace(/[^a-zA-Z0-9]/g, '_')}`;
-
-  // Start cluster
-  lines.push(`${indent}subgraph ${clusterName} {`);
-  lines.push(`${indent}  label="${normalizePath(path.relative(graph.rootDir, dirNode.path)) || '.'}";`);
-  lines.push(`${indent}  style=filled;`);
-  lines.push(`${indent}  color=${depth === 0 ? 'lightgrey' : 'white'};`);
-  lines.push(`${indent}  fillcolor="${depth === 0 ? '#f0f0f0' : '#ffffff'}";`);
-  lines.push('');
-
-  // Add files in this directory
-  const filesInDir = Array.from(graph.nodes.values()).filter((node) => (node.parent || graph.rootDir) === dirNode.path);
-
-  for (const fileNode of filesInDir) {
-    const nodeId = `n${nodeIds.size}`;
-    nodeIds.set(fileNode.path, nodeId);
-
-    const fileName = path.basename(fileNode.path);
-
-    // Color nodes based on their role
-    let fillcolor = 'lightblue';
-    if (fileNode.dependencies.length === 0 && fileNode.dependents.length > 0) {
-      fillcolor = 'lightgreen'; // Leaf nodes
-    } else if (fileNode.dependents.length === 0 && fileNode.dependencies.length > 0) {
-      fillcolor = 'lightyellow'; // Entry points
-    } else if (fileNode.dependencies.length === 0 && fileNode.dependents.length === 0) {
-      fillcolor = 'lightgray'; // Isolated
-    }
-
-    lines.push(
-      `${indent}  ${nodeId} [label="${escapeLabel(fileName)}", fillcolor="${fillcolor}", style="filled,rounded"];`
-    );
-  }
-
-  // Add child directories (nested clusters)
-  for (const child of dirNode.children) {
-    generateClusters(child, graph, nodeIds, lines, depth + 1);
-  }
-
-  lines.push(`${indent}}`);
 }
 
 /**

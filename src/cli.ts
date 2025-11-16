@@ -15,7 +15,7 @@ program
   .version('1.0.0')
   .argument('<directory>', 'Path to the project directory to analyze')
   .option('-c, --config <file>', 'Config file path (e.g., tangly.config.json)')
-  .option('-f, --format <format>', 'Output format: json, dot, dot-hierarchy, or tree')
+  .option('-f, --format <format>', 'Output format: json, dot, dot-hierarchy, tree, or html')
   .option('-o, --output <file>', 'Output file (defaults to stdout)')
   .option('--include-external', 'Include external dependencies (node_modules, etc.)')
   .action(
@@ -61,8 +61,8 @@ program
 
         // Validate format
         const format = mergedOptions.format.toLowerCase() as OutputFormat;
-        if (!['json', 'dot', 'dot-hierarchy', 'tree'].includes(format)) {
-          console.error(`Error: Invalid format "${format}". Must be one of: json, dot, dot-hierarchy, tree`);
+        if (!['json', 'dot', 'dot-hierarchy', 'tree', 'html'].includes(format)) {
+          console.error(`Error: Invalid format "${format}". Must be one of: json, dot, dot-hierarchy, tree, html`);
           process.exit(1);
         }
 

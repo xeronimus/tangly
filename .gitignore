@@ -5,7 +5,7 @@ node_modules/
 dist/
 
 # Generated test files
-dependency-graph.*
+graph.*
 
 # Config files (keep example)
 tangly.config.json

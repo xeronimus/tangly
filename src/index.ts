@@ -10,4 +10,5 @@ export {formatAsJson} from './formatters/json';
 export {formatAsDot} from './formatters/dot';
 export {formatAsDotHierarchy} from './formatters/dotHierarchy';
 export {formatAsTree} from './formatters/tree';
+export {formatAsHtml} from './formatters/html';
 export * from './types';

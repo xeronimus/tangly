@@ -4,6 +4,7 @@ import {formatAsJson} from './formatters/json';
 import {formatAsDot} from './formatters/dot';
 import {formatAsDotHierarchy} from './formatters/dotHierarchy';
 import {formatAsTree} from './formatters/tree';
+import {formatAsHtml} from './formatters/html';
 
 /**
  * Main analyzer function
@@ -24,6 +25,8 @@ export async function analyzeProject(options: AnalyzerOptions): Promise<string> 
       return formatAsDotHierarchy(graph);
     case 'tree':
       return formatAsTree(graph);
+    case 'html':
+      return formatAsHtml(graph);
     default:
       throw new Error(`Unknown format: ${format}`);
   }

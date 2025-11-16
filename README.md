@@ -6,8 +6,7 @@ Tangly is a powerful CLI tool that analyzes TypeScript and React projects to bui
 
 ## ✨ Features
 
-- 📊 **Dual Graph Analysis**: Tracks both import dependencies and file system hierarchy
-- 🎨 **Multiple Output Formats**: JSON, DOT (Graphviz), and interactive tree view
+- 🎨 **Multiple Output Formats**: JSON, DOT (Graphviz), and tree view
 - 🔍 **Deep Import Analysis**: Distinguishes between default, named, namespace, and type-only imports
 - 🚫 **Flexible Filtering**: Exclude files using regex patterns
 - 🔄 **Circular Dependency Detection**: Automatically identifies dependency cycles

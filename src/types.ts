@@ -44,7 +44,7 @@ export interface ProjectGraph {
   rootDir: string;
 }
 
-export type OutputFormat = 'json' | 'dot' | 'dot-hierarchy' | 'tree';
+export type OutputFormat = 'json' | 'dot' | 'dot-hierarchy' | 'tree' | 'html';
 
 export interface AnalyzerOptions {
   /** Root directory to analyze */
