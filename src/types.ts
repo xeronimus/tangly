@@ -1,5 +1,5 @@
 /**
- * Types for the spidernet dependency graph analyzer
+ * Types for the tangly project graph analyzer
  */
 
 export type ImportType = 'default' | 'named' | 'namespace' | 'type' | 'side-effect';

@@ -10,11 +10,11 @@ import {readConfigFile, mergeOptions} from './config';
 const program = new Command();
 
 program
-  .name('spidernet')
-  .description('Build dependency graphs for TypeScript/React projects')
+  .name('tangly')
+  .description('Untangle your TypeScript/React project dependencies')
   .version('1.0.0')
   .argument('<directory>', 'Path to the project directory to analyze')
-  .option('-c, --config <file>', 'Config file path (e.g., snconfig.json)')
+  .option('-c, --config <file>', 'Config file path (e.g., tangly.config.json)')
   .option('-f, --format <format>', 'Output format: json, dot, or tree')
   .option('-o, --output <file>', 'Output file (defaults to stdout)')
   .option('--include-external', 'Include external dependencies (node_modules, etc.)')

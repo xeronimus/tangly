@@ -8,7 +8,7 @@ dist/
 dependency-graph.*
 
 # Config files (keep example)
-snconfig.json
+tangly.config.json
 
 # IDE
 .idea/

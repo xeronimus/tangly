@@ -1,10 +1,10 @@
 {
-  "name": "spidernet",
+  "name": "tangly",
   "version": "1.0.0",
-  "description": "CLI tool to build dependency graphs for TypeScript/React projects",
+  "description": "Untangle your TypeScript/React project dependencies - build and visualize project graphs",
   "main": "dist/index.js",
   "bin": {
-    "spidernet": "./dist/cli.js"
+    "tangly": "./dist/cli.js"
   },
   "scripts": {
     "build": "tsc",

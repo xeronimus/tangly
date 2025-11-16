@@ -1,5 +1,5 @@
 /**
- * Spidernet - Dependency graph analyzer for TypeScript/React projects
+ * Tangly - Untangle your TypeScript/React project dependencies
  */
 
 export {analyzeProject} from './analyzer';

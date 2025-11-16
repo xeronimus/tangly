@@ -1,6 +1,6 @@
 {
-  "_comment": "Spidernet configuration file example",
-  "_usage": "Copy this file to snconfig.json and customize as needed",
+  "_comment": "Tangly configuration file example",
+  "_usage": "Copy this file to tangly.config.json and customize as needed",
 
   "_comment_format": "Output format: 'json', 'dot' (Graphviz), or 'tree' (console tree view)",
   "format": "tree",
