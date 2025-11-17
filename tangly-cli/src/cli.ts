@@ -23,7 +23,7 @@ program
   .action(
     async (
       directory: string,
-      options: { config?: string; format?: string; output?: string; includeExternal?: boolean; watch?: boolean }
+      options: {config?: string; format?: string; output?: string; includeExternal?: boolean; watch?: boolean}
     ) => {
       try {
         // Resolve the directory path

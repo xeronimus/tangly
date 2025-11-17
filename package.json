@@ -1,37 +1,28 @@
 {
   "name": "tangly",
-  "version": "1.0.0",
-  "description": "Untangle your TypeScript/React project dependencies - build and visualize project graphs",
-  "main": "dist/index.js",
-  "bin": {
-    "tangly": "./dist/cli.js"
+  "version": "0.0.2",
+  "description": "**Untangle your TypeScript/React project dependencies**",
+  "homepage": "https://github.com/xeronimus/tangly#readme",
+  "bugs": {
+    "url": "https://github.com/xeronimus/tangly/issues"
   },
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/cli.js",
-    "dev": "ts-node src/cli.ts",
-    "format": "prettier --write .",
-    "ft": "npm run format && npm run build && npm t",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://xeronimus@github.com/xeronimus/tangly.git"
   },
-  "keywords": [
-    "cli",
-    "dependency-graph",
-    "typescript",
-    "react",
-    "analyzer"
-  ],
-  "author": "",
   "license": "ISC",
+  "author": "",
   "type": "commonjs",
-  "devDependencies": {
-    "@types/node": "^24.10.1",
-    "prettier": "^3.6.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd tangly-cli && npm i && cd ../tangly-viewer && npm i",
+    "format": "cd tangly-cli && npm run format && cd ../tangly-viewer && npm run format",
+    "ft": "cd tangly-cli && npm run ft && cd ../tangly-viewer && npm run ft",
+    "test": "cd tangly-cli && npm t && cd ../tangly-viewer && npm t"
   },
-  "dependencies": {
-    "chokidar": "^4.0.3",
-    "commander": "^14.0.2"
+  "devDependencies": {
+    "fs-extra": "^11.3.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
   }
 }

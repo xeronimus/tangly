@@ -13,8 +13,5 @@
 
   "_comment_exclude": "Regex pattern(s) to exclude files. Can be a string or array of strings",
   "_exclude_examples": "Examples: '.*\\.test\\.ts$' or ['.*\\.test\\.ts$', '.*\\.spec\\.tsx$', 'src/legacy/.*']",
-  "exclude": [
-    ".*\\.test\\.ts$",
-    ".*/testResources/.*"
-  ]
+  "exclude": [".*\\.test\\.ts$", ".*/testResources/.*"]
 }

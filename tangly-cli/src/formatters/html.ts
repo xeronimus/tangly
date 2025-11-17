@@ -1,6 +1,6 @@
 import {ProjectGraph} from '../types';
 import * as path from 'path';
-import * as fs from "node:fs";
+import * as fs from 'node:fs';
 
 /**
  * Format project graph as interactive HTML with tree view and SVG dependency lines
@@ -49,12 +49,11 @@ export function formatAsHtml(graph: ProjectGraph): string {
 </html>`;
 }
 
-
 /**
  * Generate edges JSON for JavaScript
  */
 function generateEdgesJson(graph: ProjectGraph): string {
-  const edges = graph.importEdges.map(edge => {
+  const edges = graph.importEdges.map((edge) => {
     const isTypeOnly = edge.imports.some((imp) => imp.isTypeOnly);
     const isSideEffect = edge.imports.some((imp) => imp.type === 'side-effect');
 
@@ -78,7 +77,7 @@ function generateEdgesJson(graph: ProjectGraph): string {
 /**
  * Generate JavaScript code for drawing dependency lines
  */
-function generateJavaScript(rootPath:string, edgesJson: string): string {
+function generateJavaScript(rootPath: string, edgesJson: string): string {
   return `
   window.tangly_root = "${normalizePath(rootPath)}/";
   window.tangly_edges = ${edgesJson};
@@ -167,10 +166,7 @@ interface DirNode {
 /**
  * Build a tree structure of directories
  */
-function buildDirectoryTree(
-  dirPaths: string[],
-  rootDir: string
-): DirNode {
+function buildDirectoryTree(dirPaths: string[], rootDir: string): DirNode {
   const root: DirNode = {
     path: rootDir,
     name: path.basename(rootDir) || 'root',

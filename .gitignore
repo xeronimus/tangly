@@ -1,15 +1,6 @@
 # Dependencies
 node_modules/
 
-# Build output
-dist/
-
-# Generated test files
-graph.*
-
-# Config files (keep example)
-tangly.config.json
-
 # IDE
 .idea/
 .vscode/

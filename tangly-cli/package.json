@@ -1,0 +1,35 @@
+{
+  "name": "tangly-cli",
+  "version": "0.0.2",
+  "description": "Untangle your TypeScript/React project dependencies - build and visualize project graphs",
+  "main": "dist/index.js",
+  "bin": {
+    "tangly": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts",
+    "format": "prettier --write .",
+    "ft": "npm run format && npm run build && npm t",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "dependency-graph",
+    "typescript",
+    "react",
+    "analyzer"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "commander": "^14.0.2"
+  }
+}

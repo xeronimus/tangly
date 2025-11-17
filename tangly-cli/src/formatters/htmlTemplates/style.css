@@ -96,7 +96,9 @@ h1 {
 }
 
 .dependency-line {
-  transition: opacity 0.2s, stroke-width 0.2s;
+  transition:
+    opacity 0.2s,
+    stroke-width 0.2s;
 }
 
 .dependency-line:hover {
