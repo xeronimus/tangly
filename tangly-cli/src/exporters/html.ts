@@ -1,13 +1,16 @@
-import { ProjectGraph, AnalyzerOptions } from '../types';
-import {formatAsJson} from './json';
+import {ProjectGraph} from '../types';
+import {formatAsJson} from '../formatters/json';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
 /**
- * Format project graph as interactive HTML with tree view and SVG dependency lines
+ * Export project graph as interactive HTML viewer
+ * This is NOT a formatter - it writes multiple files to disk
  *
+ * @param graph - The project graph to export
+ * @param targetDir - Where to write the HTML file and assets
  */
-export function formatAsHtml(graph: ProjectGraph, options: AnalyzerOptions): string {
+export function exportAsHtml(graph: ProjectGraph, targetDir: string): void {
   // Step 1: Run the JSON formatter with the given projectGraph
   const jsonData = formatAsJson(graph);
 
@@ -30,35 +33,31 @@ export function formatAsHtml(graph: ProjectGraph, options: AnalyzerOptions): str
   htmlTemplate = htmlTemplate.replace(/src="\/assets\//g, 'src="./assets/');
   htmlTemplate = htmlTemplate.replace(/href="\/assets\//g, 'href="./assets/');
 
-  // Step 3 continued: Add a script tag to inject the data
+  // Step 4: Add a script tag to inject the data
   const dataScript = `<script>window.TANGLY_DATA = ${jsonData};</script>`;
   const modifiedHtml = htmlTemplate.replace('</head>', `  ${dataScript}\n  </head>`);
 
-  // Step 4: Write the modified HTML to the target directory
-  if (!options.output) {
-    throw new Error('Output path is required for HTML format');
-  }
-
-  const targetDir = path.dirname(options.output);
+  // Step 5: Write the modified HTML to the target directory
 
   // Create target directory if it doesn't exist
   if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir, { recursive: true });
+    fs.mkdirSync(targetDir, {recursive: true});
   }
 
   const outputHtmlPath = path.join(targetDir, 'index.html');
   fs.writeFileSync(outputHtmlPath, modifiedHtml, 'utf-8');
 
-  // Step 5: Copy the assets folder to the target directory
+  // Step 6: Copy the assets folder to the target directory
   const assetsSourcePath = path.join(viewerDistPath, 'assets');
   const assetsTargetPath = path.join(targetDir, 'assets');
 
   if (fs.existsSync(assetsSourcePath)) {
     // Copy assets folder recursively (fs-extra will overwrite if exists)
-    fs.copySync(assetsSourcePath, assetsTargetPath, { overwrite: true });
+    fs.copySync(assetsSourcePath, assetsTargetPath, {overwrite: true});
   }
 
-  // Step 6: Return success message
-  return `HTML viewer written to ${outputHtmlPath}\nAssets copied to ${assetsTargetPath}\n\nTo view:\n- Open ${outputHtmlPath} directly in a browser (may have CORS issues)\n- OR run a local server: npx serve ${targetDir}`;
+  console.log(`HTML viewer written to ${outputHtmlPath}`);
+  console.log(`Assets copied to ${assetsTargetPath}`);
+  console.log(`\nTo view:`);
+  console.log(`- run a local server: npx serve ${targetDir}`);
 }
-

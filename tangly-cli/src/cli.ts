@@ -4,9 +4,13 @@ import {Command} from 'commander';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as chokidar from 'chokidar';
-import {analyzeProject} from './analyzer';
 import {OutputFormat, ConfigFile} from './types';
 import {readConfigFile, mergeOptions} from './config';
+import {buildProjectGraph} from './graph';
+import {formatAsJson} from './formatters/json';
+import {formatAsDot} from './formatters/dot';
+import {formatAsTree} from './formatters/tree';
+import {exportAsHtml} from './exporters/html';
 
 const program = new Command();
 
@@ -16,14 +20,22 @@ program
   .version('1.0.0')
   .argument('<directory>', 'Path to the project directory to analyze')
   .option('-c, --config <file>', 'Config file path (e.g., tangly.config.json)')
-  .option('-f, --format <format>', 'Output format: json, dot, dot-hierarchy, tree, or html')
+  .option('-f, --format <format>', 'Output format: json, dot, tree')
   .option('-o, --output <file>', 'Output file (defaults to stdout)')
+  .option('-v, --viewer <directory>', 'Use tangly-viewer (cannot be used with -f. )')
   .option('--include-external', 'Include external dependencies (node_modules, etc.)')
   .option('-w, --watch', 'Watch for file changes and regenerate automatically')
   .action(
     async (
       directory: string,
-      options: {config?: string; format?: string; output?: string; includeExternal?: boolean; watch?: boolean}
+      options: {
+        config?: string;
+        format?: string;
+        output?: string;
+        viewer?: string;
+        includeExternal?: boolean;
+        watch?: boolean;
+      }
     ) => {
       try {
         // Resolve the directory path
@@ -56,45 +68,61 @@ program
           {
             format: options.format,
             output: options.output,
-            includeExternal: options.includeExternal
+            includeExternal: options.includeExternal,
+            viewer: options.viewer
           },
           configFileOptions
         );
 
         // Validate format
         const format = mergedOptions.format.toLowerCase() as OutputFormat;
-        if (!['json', 'dot', 'dot-hierarchy', 'tree', 'html'].includes(format)) {
-          console.error(`Error: Invalid format "${format}". Must be one of: json, dot, dot-hierarchy, tree, html`);
+        if (!['json', 'dot', 'tree'].includes(format)) {
+          console.error(`Error: Invalid format "${format}". Must be one of: json, dot, tree`);
           process.exit(1);
         }
 
         // Function to run analysis
         const runAnalysis = async () => {
           try {
-            const result = await analyzeProject({
-              rootDir,
-              format,
-              output: mergedOptions.output,
-              includeExternal: mergedOptions.includeExternal,
-              excludePatterns:
-                typeof mergedOptions.excludePatterns === 'string'
-                  ? [mergedOptions.excludePatterns]
-                  : mergedOptions.excludePatterns
-            });
+            // Build the dependency graph
+            const excludePatterns =
+              typeof mergedOptions.excludePatterns === 'string'
+                ? [mergedOptions.excludePatterns]
+                : mergedOptions.excludePatterns;
+            const graph = buildProjectGraph(rootDir, mergedOptions.includeExternal, excludePatterns);
 
-            // Output the result
-            if (mergedOptions.output) {
-              // Ensure output directory exists
-              const outputDir = path.dirname(mergedOptions.output);
-              if (!fs.existsSync(outputDir)) {
-                fs.mkdirSync(outputDir, { recursive: true });
+            if (mergedOptions.viewer) {
+              exportAsHtml(graph, mergedOptions.viewer);
+            } else {
+              // format the graph according to "format" option
+              let result = '';
+              switch (format) {
+                case 'json':
+                  result = formatAsJson(graph);
+                  break;
+                case 'dot':
+                  result = formatAsDot(graph);
+                  break;
+                case 'tree':
+                  result = formatAsTree(graph);
+                  break;
+                default:
+                  throw new Error(`Unknown format: ${format}`);
               }
 
-              fs.writeFileSync(mergedOptions.output, result);
-              const timestamp = new Date().toLocaleTimeString();
-              console.log(`[${timestamp}] Dependency graph written to ${mergedOptions.output}`);
-            } else {
-              console.log(result);
+              if (mergedOptions.output) {
+                // Ensure output directory exists
+                const outputDir = path.dirname(mergedOptions.output);
+                if (!fs.existsSync(outputDir)) {
+                  fs.mkdirSync(outputDir, {recursive: true});
+                }
+
+                fs.writeFileSync(mergedOptions.output, result);
+                const timestamp = new Date().toLocaleTimeString();
+                console.log(`[${timestamp}] Dependency graph written to ${mergedOptions.output}`);
+              } else {
+                console.log(result);
+              }
             }
           } catch (error) {
             console.error('Error analyzing project:', error);

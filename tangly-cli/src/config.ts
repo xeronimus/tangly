@@ -76,18 +76,21 @@ export function mergeOptions(
     format?: string;
     output?: string;
     includeExternal?: boolean;
+    viewer?: string;
   },
   configOptions: ConfigFile
 ): {
   format: OutputFormat;
   output?: string;
   includeExternal: boolean;
+  viewer?: string;
   excludePatterns?: string | string[];
 } {
   return {
     format: (cliOptions.format as OutputFormat) || configOptions.format || 'json',
     output: cliOptions.output || configOptions.output,
     includeExternal: cliOptions.includeExternal ?? configOptions.includeExternal ?? false,
-    excludePatterns: configOptions.exclude
+    excludePatterns: configOptions.exclude,
+    viewer: cliOptions.viewer || configOptions.viewer
   };
 }

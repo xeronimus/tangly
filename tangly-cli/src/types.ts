@@ -44,26 +44,17 @@ export interface ProjectGraph {
   rootDir: string;
 }
 
-export type OutputFormat = 'json' | 'dot' | 'dot-hierarchy' | 'tree' | 'html';
-
-export interface AnalyzerOptions {
-  /** Root directory to analyze */
-  rootDir: string;
-  /** Output format */
-  format: OutputFormat;
-  /** Output file path (optional, defaults to stdout) */
-  output?: string;
-  /** Whether to include external dependencies (node_modules, etc.) */
-  includeExternal?: boolean;
-  /** Regex patterns to exclude files from analysis */
-  excludePatterns?: string[];
-}
+export type OutputFormat = 'json' | 'dot' | 'tree';
 
 export interface ConfigFile {
   /** Output format */
   format?: OutputFormat;
   /** Output file path */
   output?: string;
+
+  /** If specified, use tangly-viewer */
+  viewer?: string;
+
   /** Whether to include external dependencies */
   includeExternal?: boolean;
   /** Regex patterns to exclude files from analysis (string or array of strings) */
