@@ -25,11 +25,13 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.10.1",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
     "chokidar": "^4.0.3",
-    "commander": "^14.0.2"
+    "commander": "^14.0.2",
+    "fs-extra": "^11.3.2"
   }
 }

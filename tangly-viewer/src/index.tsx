@@ -30,6 +30,6 @@ async function getProjectGraphData(): Promise<ProjectGraphData> {
   if (window.TANGLY_DATA) {
     return window.TANGLY_DATA;
   } else {
-    return fetch('/graph.json').then((response) => response.json());
+    return fetch('/graph.dev.json').then((response) => response.json());
   }
 }

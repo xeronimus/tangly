@@ -18,7 +18,8 @@
     "postinstall": "cd tangly-cli && npm i && cd ../tangly-viewer && npm i",
     "format": "cd tangly-cli && npm run format && cd ../tangly-viewer && npm run format",
     "ft": "cd tangly-cli && npm run ft && cd ../tangly-viewer && npm run ft",
-    "test": "cd tangly-cli && npm t && cd ../tangly-viewer && npm t"
+    "test": "cd tangly-cli && npm t && cd ../tangly-viewer && npm t",
+    "build": "cd tangly-cli && npm run build && cd ../tangly-viewer && npm run build"
   },
   "devDependencies": {
     "fs-extra": "^11.3.2",

@@ -84,6 +84,12 @@ program
 
             // Output the result
             if (mergedOptions.output) {
+              // Ensure output directory exists
+              const outputDir = path.dirname(mergedOptions.output);
+              if (!fs.existsSync(outputDir)) {
+                fs.mkdirSync(outputDir, { recursive: true });
+              }
+
               fs.writeFileSync(mergedOptions.output, result);
               const timestamp = new Date().toLocaleTimeString();
               console.log(`[${timestamp}] Dependency graph written to ${mergedOptions.output}`);

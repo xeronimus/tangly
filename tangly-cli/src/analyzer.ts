@@ -26,7 +26,7 @@ export async function analyzeProject(options: AnalyzerOptions): Promise<string> 
     case 'tree':
       return formatAsTree(graph);
     case 'html':
-      return formatAsHtml(graph);
+      return formatAsHtml(graph, options);
     default:
       throw new Error(`Unknown format: ${format}`);
   }
