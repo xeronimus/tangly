@@ -52,8 +52,8 @@ export interface ConfigFile {
   /** Output file path */
   output?: string;
 
-  /** If specified, use tangly-viewer */
-  viewer?: string;
+  /** If specified, use tangly-viewer app */
+  app?: string;
 
   /** Whether to include external dependencies */
   includeExternal?: boolean;

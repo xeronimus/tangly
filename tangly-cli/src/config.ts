@@ -76,14 +76,14 @@ export function mergeOptions(
     format?: string;
     output?: string;
     includeExternal?: boolean;
-    viewer?: string;
+    app?: string;
   },
   configOptions: ConfigFile
 ): {
   format: OutputFormat;
   output?: string;
   includeExternal: boolean;
-  viewer?: string;
+  app?: string;
   excludePatterns?: string | string[];
 } {
   return {
@@ -91,6 +91,6 @@ export function mergeOptions(
     output: cliOptions.output || configOptions.output,
     includeExternal: cliOptions.includeExternal ?? configOptions.includeExternal ?? false,
     excludePatterns: configOptions.exclude,
-    viewer: cliOptions.viewer || configOptions.viewer
+    app: cliOptions.app || configOptions.app
   };
 }

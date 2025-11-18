@@ -11,18 +11,19 @@ import {formatAsJson} from './formatters/json';
 import {formatAsDot} from './formatters/dot';
 import {formatAsTree} from './formatters/tree';
 import {exportAsHtml} from './exporters/html';
+import packageJson from '../package.json';
 
 const program = new Command();
 
 program
   .name('tangly')
   .description('Untangle your TypeScript/React project dependencies')
-  .version('1.0.0')
+  .version(packageJson.version, '-v, --version', 'Output the version number')
   .argument('<directory>', 'Path to the project directory to analyze')
   .option('-c, --config <file>', 'Config file path (e.g., tangly.config.json)')
   .option('-f, --format <format>', 'Output format: json, dot, tree')
   .option('-o, --output <file>', 'Output file (defaults to stdout)')
-  .option('-v, --viewer <directory>', 'Use tangly-viewer (cannot be used with -f. )')
+  .option('-a, --app <directory>', 'Use tangly-viewer. Specify a directory')
   .option('--include-external', 'Include external dependencies (node_modules, etc.)')
   .option('-w, --watch', 'Watch for file changes and regenerate automatically')
   .action(
@@ -32,7 +33,7 @@ program
         config?: string;
         format?: string;
         output?: string;
-        viewer?: string;
+        app?: string;
         includeExternal?: boolean;
         watch?: boolean;
       }
@@ -69,7 +70,7 @@ program
             format: options.format,
             output: options.output,
             includeExternal: options.includeExternal,
-            viewer: options.viewer
+            app: options.app
           },
           configFileOptions
         );
@@ -91,8 +92,11 @@ program
                 : mergedOptions.excludePatterns;
             const graph = buildProjectGraph(rootDir, mergedOptions.includeExternal, excludePatterns);
 
-            if (mergedOptions.viewer) {
-              exportAsHtml(graph, mergedOptions.viewer);
+            if (mergedOptions.app) {
+              if(mergedOptions.output ||mergedOptions.format) {
+                console.warn(`Using the tangly-viewer app. Ignoring -f (format) and -o (output)`)
+              }
+              exportAsHtml(graph, mergedOptions.app);
             } else {
               // format the graph according to "format" option
               let result = '';
