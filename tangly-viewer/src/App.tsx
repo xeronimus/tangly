@@ -1,9 +1,11 @@
 import {useRef, useState} from 'react';
-import {ProjectGraphData, EdgeWithClass} from './types';
+import {ProjectGraphData, EdgeWithClass, ImportEdge, TreeSelection} from './types';
 import {TreeView} from './components/TreeView';
-import {DependencyLines} from './components/DependencyLines';
 import {buildDirectoryTree} from './utils/buildDirectoryTree';
 import * as styles from './App.css';
+import DependencyLines from './components/DependencyLines.tsx';
+import buildEdges from './utils/buildEdges.ts';
+import {filterEdges} from './utils/filterEdges.ts';
 
 interface AppProps {
   data: ProjectGraphData;
@@ -11,41 +13,31 @@ interface AppProps {
 
 export function App({data}: AppProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [selectedFolder, setSelectedFolder] = useState<string | null>(null);
+  const [treeSelection, setTreeSelection] = useState<TreeSelection | null>(null);
 
   // Build directory tree from file nodes
   const dirTree = buildDirectoryTree(data.nodes, data.metadata.rootDir);
 
+  const edges: EdgeWithClass[] = buildEdges(filterEdges(data.importEdges, treeSelection), data.metadata.rootDir);
+
   // Convert import edges to edges with classes
-  const edges: EdgeWithClass[] = data.importEdges.map((edge) => {
-    const isTypeOnly = edge.imports.some((imp) => imp.isTypeOnly);
-    const isSideEffect = edge.imports.some((imp) => imp.type === 'side-effect');
 
-    let edgeClass: EdgeWithClass['class'] = 'import-regular';
-    if (isSideEffect) {
-      edgeClass = 'import-side-effect';
-    } else if (isTypeOnly) {
-      edgeClass = 'import-type';
-    }
-
-    return {
-      from: edge.from,
-      to: edge.to,
-      class: edgeClass
-    };
-  });
-
-  const handleFolderClick = (folderPath: string) => {
-    if (selectedFolder === folderPath) {
-      setSelectedFolder(null);
+  const handleNodeClick = (nodePath: string, isDirectory: boolean) => {
+    if (treeSelection?.nodePath === nodePath) {
+      setTreeSelection(null);
     } else {
-      setSelectedFolder(folderPath);
+      setTreeSelection({
+        nodePath,
+        isDirectory
+      });
     }
   };
 
   return (
     <div>
       <h1 className={styles.title}>📊 Tangly - Project Graph</h1>
+
+      <h2>{treeSelection?.nodePath}</h2>
 
       {/* Statistics Section */}
       <div className={styles.stats}>
@@ -83,18 +75,14 @@ export function App({data}: AppProps) {
 
       {/* Main Graph Container */}
       <div ref={containerRef} className={styles.container}>
-        <DependencyLines
-          edges={edges}
-          selectedFolder={selectedFolder}
-          rootDir={data.metadata.rootDir}
-          containerRef={containerRef}
-        />
         <TreeView
           dirTree={dirTree}
           rootDir={data.metadata.rootDir}
-          selectedFolder={selectedFolder}
-          onFolderClick={handleFolderClick}
+          selectedNode={treeSelection}
+          onNodeClick={handleNodeClick}
         />
+
+        <DependencyLines edges={edges} rootDir={data.metadata.rootDir} containerRef={containerRef} />
       </div>
 
       {/* Legend */}

@@ -1,7 +1,11 @@
 import {style, globalStyle} from '@vanilla-extract/css';
 
 globalStyle('body', {
-  fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif",
+  fontFamily: "'Inter', sans-serif",
+  fontOpticalSizing: 'auto',
+  fontWeight: 400,
+  fontStyle: 'normal',
+
   margin: 0,
   padding: '20px',
   background: '#f5f5f5',
@@ -15,98 +19,12 @@ export const title = style({
 
 export const container = style({
   position: 'relative',
-  background: 'white',
   padding: '30px',
   borderRadius: '8px',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-  minHeight: '400px'
-});
-
-export const dependencySvg = style({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  pointerEvents: 'none',
-  zIndex: 10
-});
-
-export const treeWrapper = style({
-  position: 'relative',
-  zIndex: 1,
-  pointerEvents: 'none'
-});
-
-export const tree = style({
-  listStyle: 'none',
-  paddingLeft: 0,
-  margin: 0
-});
-
-globalStyle(`${tree} ol`, {
-  listStyle: 'none',
-  paddingLeft: '24px',
-  margin: '2px 0'
-});
-
-globalStyle(`${tree} li`, {
-  margin: '2px 0',
-  padding: '6px 10px',
-  borderRadius: '4px',
-  transition: 'background 0.2s',
-  position: 'relative',
-  pointerEvents: 'auto'
-});
-
-export const fileItem = style({
-  color: '#1976d2',
-  fontFamily: "'Consolas', 'Monaco', monospace",
-  fontSize: '14px',
-  selectors: {
-    '&::before': {
-      content: '📄 ',
-      marginRight: '4px'
-    }
-  }
-});
-
-export const directoryItem = style({
-  fontWeight: 600,
-  color: '#424242',
-  marginTop: '8px',
-  border: '2px solid transparent',
-  cursor: 'pointer',
-  selectors: {
-    '&::before': {
-      content: '📁 ',
-      marginRight: '4px'
-    }
-  }
-});
-
-export const selectedDirectory = style({
-  fontWeight: 'bold',
-  border: '2px solid #ccc',
-  selectors: {
-    '&::before': {
-      content: '--> 📂 '
-    }
-  }
-});
-
-export const entryPoint = style({});
-
-export const leafFile = style({});
-
-export const dependencyLine = style({
-  transition: 'opacity 0.2s, stroke-width 0.2s',
-  selectors: {
-    '&:hover': {
-      opacity: '1 !important',
-      strokeWidth: '3 !important'
-    }
-  }
+  minHeight: '400px',
+  background: '#2b2b2b',
+  color: '#dedede'
 });
 
 export const legend = style({

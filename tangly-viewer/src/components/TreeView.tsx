@@ -1,22 +1,23 @@
-import {FileNode, DirNode} from '../types';
-import * as styles from '../App.css';
+import {FileNode, DirNode, TreeSelection} from '../types';
+
+import * as styles from './TreeView.css.ts';
 
 interface TreeViewProps {
   dirTree: DirNode;
   rootDir: string;
-  selectedFolder: string | null;
-  onFolderClick: (folderPath: string) => void;
+  selectedNode: TreeSelection | null;
+  onNodeClick: (nodePath: string, isDirectory: boolean) => void;
 }
 
-export function TreeView({dirTree, rootDir, selectedFolder, onFolderClick}: TreeViewProps) {
+export function TreeView({dirTree, rootDir, selectedNode, onNodeClick}: TreeViewProps) {
   return (
     <div className={styles.treeWrapper}>
       <ol className={styles.tree}>
         <DirNodeComponent
           node={dirTree}
           rootDir={rootDir}
-          selectedFolder={selectedFolder}
-          onFolderClick={onFolderClick}
+          selectedNode={selectedNode}
+          onNodeClick={onNodeClick}
           isRoot={true}
         />
       </ol>
@@ -27,40 +28,46 @@ export function TreeView({dirTree, rootDir, selectedFolder, onFolderClick}: Tree
 interface DirNodeComponentProps {
   node: DirNode;
   rootDir: string;
-  selectedFolder: string | null;
-  onFolderClick: (folderPath: string) => void;
+  selectedNode: TreeSelection | null;
+  onNodeClick: (nodePath: string, isDirectory: boolean) => void;
   isRoot?: boolean;
 }
 
-function DirNodeComponent({node, rootDir, selectedFolder, onFolderClick, isRoot = false}: DirNodeComponentProps) {
-  const handleFolderClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onFolderClick(node.path);
-  };
-
+function DirNodeComponent({node, rootDir, selectedNode, onNodeClick, isRoot = false}: DirNodeComponentProps) {
   const hasContent = node.files.length > 0 || node.children.length > 0;
+
+  const handleNodeClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onNodeClick(node.path, true);
+  };
 
   return (
     <>
       {!isRoot && (
         <li
-          className={`${styles.directoryItem} ${selectedFolder === node.path ? styles.selectedDirectory : ''}`}
+          className={`${styles.directoryItem} ${selectedNode?.nodePath === node.path ? styles.directoryItemSelected : ''}`}
           data-folder-path={node.path}
-          onClick={handleFolderClick}
+          onClick={handleNodeClick}
         >
-          {node.name}/
+          <span>{node.name}/</span>
           {hasContent && (
-            <ol>
+            <ol className={styles.treeNodeList}>
               {node.files.map((file) => (
-                <FileNodeComponent key={file.path} file={file} rootDir={rootDir} />
+                <FileNodeComponent
+                  key={file.path}
+                  node={file}
+                  rootDir={rootDir}
+                  selectedNode={selectedNode}
+                  onNodeClick={onNodeClick}
+                />
               ))}
               {node.children.map((child) => (
                 <DirNodeComponent
                   key={child.path}
                   node={child}
                   rootDir={rootDir}
-                  selectedFolder={selectedFolder}
-                  onFolderClick={onFolderClick}
+                  selectedNode={selectedNode}
+                  onNodeClick={onNodeClick}
                 />
               ))}
             </ol>
@@ -70,15 +77,21 @@ function DirNodeComponent({node, rootDir, selectedFolder, onFolderClick, isRoot 
       {isRoot && (
         <>
           {node.files.map((file) => (
-            <FileNodeComponent key={file.path} file={file} rootDir={rootDir} />
+            <FileNodeComponent
+              key={file.path}
+              node={file}
+              rootDir={rootDir}
+              selectedNode={selectedNode}
+              onNodeClick={onNodeClick}
+            />
           ))}
           {node.children.map((child) => (
             <DirNodeComponent
               key={child.path}
               node={child}
               rootDir={rootDir}
-              selectedFolder={selectedFolder}
-              onFolderClick={onFolderClick}
+              selectedNode={selectedNode}
+              onNodeClick={onNodeClick}
             />
           ))}
         </>
@@ -88,24 +101,36 @@ function DirNodeComponent({node, rootDir, selectedFolder, onFolderClick, isRoot 
 }
 
 interface FileNodeComponentProps {
-  file: FileNode;
+  node: FileNode;
   rootDir: string;
+  selectedNode: TreeSelection | null;
+  onNodeClick: (nodePath: string, isDirectory: boolean) => void;
 }
 
-function FileNodeComponent({file, rootDir}: FileNodeComponentProps) {
-  const fileName = file.relativePath.split('/').pop() || file.relativePath;
+function FileNodeComponent({node, rootDir, selectedNode, onNodeClick}: FileNodeComponentProps) {
+  const handleNodeClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onNodeClick(node.path, false);
+  };
+
+  const fileName = node.relativePath.split('/').pop() || node.relativePath;
 
   let fileClass = styles.fileItem;
-  if (file.dependencies.length === 0 && file.dependents.length > 0) {
+  if (node.dependencies.length === 0 && node.dependents.length > 0) {
     fileClass = `${styles.fileItem} ${styles.leafFile}`;
-  } else if (file.dependents.length === 0 && file.dependencies.length > 0) {
+  } else if (node.dependents.length === 0 && node.dependencies.length > 0) {
     fileClass = `${styles.fileItem} ${styles.entryPoint}`;
   }
 
-  const folderPath = file.parent || rootDir;
+  const folderPath = node.parent || rootDir;
 
   return (
-    <li className={fileClass} data-file-path={file.path} data-folder={folderPath}>
+    <li
+      className={`${fileClass} ${selectedNode?.nodePath === node.path ? styles.fileItemSelected : ''}`}
+      onClick={handleNodeClick}
+      data-file-path={node.path.replace(rootDir, '')}
+      data-folder={folderPath}
+    >
       <span>{fileName}</span>
     </li>
   );

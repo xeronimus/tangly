@@ -47,3 +47,8 @@ export interface DirNode {
   children: DirNode[];
   files: FileNode[];
 }
+
+export interface TreeSelection {
+  nodePath: string;
+  isDirectory: boolean;
+}
