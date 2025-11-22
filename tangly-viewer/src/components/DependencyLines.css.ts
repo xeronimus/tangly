@@ -34,9 +34,8 @@ export const lineBoxVariants = styleVariants({
   'down-LR': [
     lineBoxBase,
     {
-      borderTop: '2px solid transparent',
+      borderTop:'2px solid transparent',
       borderImage: `linear-gradient(45deg, ${startColor}, ${cornerOneColor}) 1`,
-      // borderTopRightRadius: borderRadius,
 
       selectors: {
         // starting dot
@@ -57,18 +56,15 @@ export const lineBoxVariants = styleVariants({
   down: [
     lineBoxBase,
     {
-      borderRight: `2px solid transparent`,
+      borderRight:'2px solid transparent',
       borderImage: `linear-gradient(45deg, ${cornerOneColor}, ${cornerTwoColor}) 1`
-      // borderTopRightRadius: borderRadius,
-      // borderBottomRightRadius: borderRadius
     }
   ],
 
   'down-RL': [
     lineBoxBase,
     {
-      borderBottom: `2px solid transparent`,
-      // borderBottomRightRadius: borderRadius,
+      borderBottom:'2px solid transparent',
       borderImage: `linear-gradient(45deg, ${endColor}, ${cornerTwoColor}) 1`,
 
       selectors: {
@@ -94,8 +90,7 @@ export const lineBoxVariants = styleVariants({
   'up-LR': [
     lineBoxBase,
     {
-      borderBottom: '2px solid transparent',
-      // borderBottomRightRadius: borderRadius,
+      borderBottom:'2px solid transparent',
       borderImage: `linear-gradient(45deg, ${startColor}, ${cornerOneColor}) 1`,
 
       selectors: {
@@ -117,9 +112,7 @@ export const lineBoxVariants = styleVariants({
   up: [
     lineBoxBase,
     {
-      borderRight: `2px solid transparent`,
-      // borderTopRightRadius: borderRadius,
-      // borderBottomRightRadius: borderRadius
+      borderRight:'2px solid transparent',
       borderImage: `linear-gradient(45deg, ${cornerOneColor}, ${cornerTwoColor}) 1`
     }
   ],
@@ -127,8 +120,7 @@ export const lineBoxVariants = styleVariants({
   'up-RL': [
     lineBoxBase,
     {
-      borderTop: `2px solid transparent`,
-      // borderTopRightRadius: borderRadius,
+      borderTop:'2px solid transparent',
       borderImage: `linear-gradient(45deg, ${endColor}, ${cornerTwoColor}) 1`,
 
       selectors: {

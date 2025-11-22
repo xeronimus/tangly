@@ -1,5 +1,5 @@
 ﻿import React, {useState} from 'react';
-import {EdgeWithClass} from '../types.ts';
+import {EdgeClass, EdgeWithClass} from '../types.ts';
 import * as styles from './DependencyLines.css';
 import useResizer from './useResizer.ts';
 import css from '../utils/asCSSProperties.ts';
@@ -27,15 +27,15 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
     <div className={styles.dependencyLinesContainer}>
       {theLines.map((d, i) => (
         <React.Fragment key={i}>
-          {[d.segmentOne, d.segmentTwo, d.segmentThree].map((t: DependencyLineSegment) => (
+          {[d.segmentOne, d.segmentTwo, d.segmentThree].map((dls: DependencyLineSegment) => (
             <div
-              key={`line-${i}:${t.type}`}
-              className={styles.lineBoxVariants[t.type]}
+              key={`line-${i}:${dls.type}`}
+              className={`${styles.lineBoxVariants[dls.type]} dls-${dls.class}`}
               style={css({
-                width: `${t.width}px`,
-                height: `${t.height}px`,
-                '--startX': `${t.x}px`,
-                '--startY': `${t.y}px`
+                width: `${dls.width}px`,
+                height: `${dls.height}px`,
+                '--startX': `${dls.x}px`,
+                '--startY': `${dls.y}px`
               })}
             />
           ))}
@@ -49,13 +49,14 @@ export default DependencyLines;
 
 
 function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRect): DependencyLine[] {
-  
-  const newlyCalculatedLines: DependencyLine[] = [];
-  edges.forEach((edge) => {
+
+  return edges.map((edge): DependencyLine => {
     const fromElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.from}"] span`);
     const toElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.to}"] span`);
 
-    if (!fromElement || !toElement) return;
+    if (!fromElement || !toElement) {
+      throw new Error(`Cannot find element from ${edge.from}`);
+    }
 
     const fromRect = fromElement.getBoundingClientRect();
     const toRect = toElement.getBoundingClientRect();
@@ -80,30 +81,31 @@ function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRe
     const lrWidth = (to.x > from.x ? to.x - from.x : 0) + widthPart;
     const rwWidth = (to.x < from.x ? from.x - to.x : 0) + widthPart;
 
-    newlyCalculatedLines.push({
+    return {
       segmentOne: {
         ...from,
         type: areWeGoingDown ? 'down-LR' : 'up-LR',
         width: lrWidth,
-        height: borderRadius
+        height: borderRadius,
+        class: edge.class
       },
       segmentTwo: {
         x: from.x + lrWidth - borderRadius,
         y: areWeGoingDown ? from.y : to.y,
         type: areWeGoingDown ? 'down' : 'up',
         height: tbbtHeight + 20,
-        width: borderRadius
+        width: borderRadius,
+        class: edge.class
       },
       segmentThree: {
         ...to,
         type: areWeGoingDown ? 'down-RL' : 'up-RL',
         width: rwWidth,
-        height: borderRadius
+        height: borderRadius,
+        class: edge.class
       }
-    });
+    }
   });
-
-  return newlyCalculatedLines;
 }
 
 interface Point {
@@ -119,6 +121,7 @@ interface DependencyLineSegment {
   y: number;
   width: number;
   height: number;
+  class: EdgeClass;
 }
 
 interface DependencyLine {

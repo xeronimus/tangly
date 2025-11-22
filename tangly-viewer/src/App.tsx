@@ -65,7 +65,7 @@ export function App({data}: AppProps) {
           </div>
         </div>
         {data.metadata.circularDependencies.length === 0 ? (
-          <div style={{marginTop: '10px', color: '#4caf50'}}>✅ No circular dependencies detected!</div>
+          <div style={{marginTop: '10px', color: '#4caf50'}}>✅ No circular dependencies detected</div>
         ) : (
           <div style={{marginTop: '10px', color: '#f44336'}}>
             ⚠️ {data.metadata.circularDependencies.length} circular dependencies detected

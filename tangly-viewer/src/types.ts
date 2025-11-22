@@ -35,10 +35,13 @@ export interface ProjectGraphData {
   importEdges: ImportEdge[];
 }
 
+
+export type EdgeClass = 'import-regular' | 'import-type' | 'import-side-effect';
+
 export interface EdgeWithClass {
   from: string;
   to: string;
-  class: 'import-regular' | 'import-type' | 'import-side-effect';
+  class: EdgeClass;
 }
 
 export interface DirNode {
