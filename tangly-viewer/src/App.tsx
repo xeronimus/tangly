@@ -1,5 +1,5 @@
 import {useRef, useState} from 'react';
-import {ProjectGraphData, EdgeWithClass, ImportEdge, TreeSelection} from './types';
+import {ProjectGraphData, EdgeWithClass, TreeSelection} from './types';
 import {TreeView} from './components/TreeView';
 import {buildDirectoryTree} from './utils/buildDirectoryTree';
 import * as styles from './App.css';
@@ -82,7 +82,7 @@ export function App({data}: AppProps) {
           onNodeClick={handleNodeClick}
         />
 
-        <DependencyLines edges={edges} rootDir={data.metadata.rootDir} containerRef={containerRef} />
+        <DependencyLines edges={edges} containerRef={containerRef} />
       </div>
 
       {/* Legend */}

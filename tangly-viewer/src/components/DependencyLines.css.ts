@@ -1,7 +1,9 @@
 ﻿import {style, styleVariants} from '@vanilla-extract/css';
 
-const endLineColor = '#00ffda';
-const verticalLineColor = '#008cff';
+const startColor = '#9aff00';
+const cornerOneColor = '#00ff6f';
+const cornerTwoColor = '#00ffc4';
+const endColor = '#00b2ff';
 
 export const borderRadius = 10;
 
@@ -27,92 +29,47 @@ export const lineBoxBase = style({
 });
 
 export const lineBoxVariants = styleVariants({
+  /* -- "down"  (start tree node is higher than end tree node) -- */
+
   'down-LR': [
     lineBoxBase,
     {
-      borderTop: '2px solid green',
-      borderTopRightRadius: borderRadius,
+      borderTop: '2px solid transparent',
+      borderImage: `linear-gradient(45deg, ${startColor}, ${cornerOneColor}) 1`,
+      // borderTopRightRadius: borderRadius,
 
       selectors: {
         // starting dot
         '&:before': {
           content: ' ',
           position: 'absolute',
-          left: 0,
-          top: -4,
+          left: -1,
+          top: -5,
           borderRadius: '50%',
           width: 8,
           height: 8,
-          background: 'green'
+          background: startColor
         }
       }
     }
   ],
-  'up-LR': [
-    lineBoxBase,
-    {
-      borderBottom: '2px solid green',
-      borderBottomRightRadius: borderRadius,
 
-      selectors: {
-        // starting dot
-        '&:before': {
-          content: ' ',
-          position: 'absolute',
-          left: 0,
-          top: borderRadius / 2,
-          borderRadius: '50%',
-          width: 8,
-          height: 8,
-          background: 'green'
-        }
-      }
-    }
-  ],
   down: [
     lineBoxBase,
     {
-      borderRight: `2px solid ${verticalLineColor}`,
-      borderTopRightRadius: borderRadius,
-      borderBottomRightRadius: borderRadius
+      borderRight: `2px solid transparent`,
+      borderImage: `linear-gradient(45deg, ${cornerOneColor}, ${cornerTwoColor}) 1`
+      // borderTopRightRadius: borderRadius,
+      // borderBottomRightRadius: borderRadius
     }
   ],
-  up: [
-    lineBoxBase,
-    {
-      borderRight: `2px solid ${verticalLineColor}`,
-      borderTopRightRadius: borderRadius,
-      borderBottomRightRadius: borderRadius
-    }
-  ],
-  'up-RL': [
-    lineBoxBase,
-    {
-      borderTop: `2px solid ${endLineColor}`,
-      borderTopRightRadius: borderRadius,
 
-      selectors: {
-        // arrow head
-        '&:after': {
-          content: '',
-          width: 0,
-          height: 0,
-          position: 'absolute',
-          left: -2,
-          top: -5,
-          backgroundColor: 'transparent',
-          borderTop: '4px solid transparent',
-          borderBottom: '4px solid transparent',
-          borderRight: `10px solid ${endLineColor}`
-        }
-      }
-    }
-  ],
   'down-RL': [
     lineBoxBase,
     {
-      borderBottom: `2px solid ${endLineColor}`,
-      borderBottomRightRadius: borderRadius,
+      borderBottom: `2px solid transparent`,
+      // borderBottomRightRadius: borderRadius,
+      borderImage: `linear-gradient(45deg, ${endColor}, ${cornerTwoColor}) 1`,
 
       selectors: {
         // arrow head
@@ -126,7 +83,67 @@ export const lineBoxVariants = styleVariants({
           backgroundColor: 'transparent',
           borderTop: '4px solid transparent',
           borderBottom: '4px solid transparent',
-          borderRight: `10px solid ${endLineColor}`
+          borderRight: `10px solid ${endColor}`
+        }
+      }
+    }
+  ],
+
+  /* -- "up"  (start tree node is lower than end tree node) -- */
+
+  'up-LR': [
+    lineBoxBase,
+    {
+      borderBottom: '2px solid transparent',
+      // borderBottomRightRadius: borderRadius,
+      borderImage: `linear-gradient(45deg, ${cornerOneColor}, ${cornerTwoColor}) 1`,
+
+      selectors: {
+        // starting dot
+        '&:before': {
+          content: ' ',
+          position: 'absolute',
+          left: -1,
+          top: borderRadius / 2 - 1,
+          borderRadius: '50%',
+          width: 8,
+          height: 8,
+          background: startColor
+        }
+      }
+    }
+  ],
+
+  up: [
+    lineBoxBase,
+    {
+      borderRight: `2px solid transparent`,
+      // borderTopRightRadius: borderRadius,
+      // borderBottomRightRadius: borderRadius
+      borderImage: `linear-gradient(45deg, ${cornerOneColor}, ${cornerTwoColor}) 1`
+    }
+  ],
+
+  'up-RL': [
+    lineBoxBase,
+    {
+      borderTop: `2px solid transparent`,
+      // borderTopRightRadius: borderRadius,
+      borderImage: `linear-gradient(45deg, ${endColor}, ${cornerTwoColor}) 1`,
+
+      selectors: {
+        // arrow head
+        '&:after': {
+          content: '',
+          width: 0,
+          height: 0,
+          position: 'absolute',
+          left: -2,
+          top: -5,
+          backgroundColor: 'transparent',
+          borderTop: '4px solid transparent',
+          borderBottom: '4px solid transparent',
+          borderRight: `10px solid ${endColor}`
         }
       }
     }

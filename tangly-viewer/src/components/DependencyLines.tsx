@@ -40,7 +40,7 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
 
       const to: Point = {
         x: leftStartPointPadding + toRect.left - lineContainerRect.left + toRect.width,
-        y: toRect.top - lineContainerRect.top - 4 + (areWeGoingDown ? -4 : 4)
+        y: toRect.top - lineContainerRect.top - 4 + (areWeGoingDown ? -1 : 6)
       };
 
       const tbbtHeight = Math.abs(from.y - to.y) - borderRadius;
