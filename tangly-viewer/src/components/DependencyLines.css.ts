@@ -96,7 +96,7 @@ export const lineBoxVariants = styleVariants({
     {
       borderBottom: '2px solid transparent',
       // borderBottomRightRadius: borderRadius,
-      borderImage: `linear-gradient(45deg, ${cornerOneColor}, ${cornerTwoColor}) 1`,
+      borderImage: `linear-gradient(45deg, ${startColor}, ${cornerOneColor}) 1`,
 
       selectors: {
         // starting dot

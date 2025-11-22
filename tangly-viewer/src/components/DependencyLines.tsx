@@ -18,61 +18,7 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
 
     const lineContainerRect = containerRef.current.getBoundingClientRect();
 
-    const newlyCalculatedLines: DependencyLine[] = [];
-
-    edges.forEach((edge) => {
-      const fromElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.from}"] span`);
-      const toElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.to}"] span`);
-
-      if (!fromElement || !toElement) return;
-
-      const fromRect = fromElement.getBoundingClientRect();
-      const toRect = toElement.getBoundingClientRect();
-
-      const areWeGoingDown = fromRect.top < toRect.top;
-
-      const leftStartPointPadding = 8;
-
-      const from: Point = {
-        x: leftStartPointPadding + fromRect.left - lineContainerRect.left + fromRect.width + 1,
-        y: fromRect.top - lineContainerRect.top + 4 + (areWeGoingDown ? 7 : 0)
-      };
-
-      const to: Point = {
-        x: leftStartPointPadding + toRect.left - lineContainerRect.left + toRect.width,
-        y: toRect.top - lineContainerRect.top - 4 + (areWeGoingDown ? -1 : 6)
-      };
-
-      const tbbtHeight = Math.abs(from.y - to.y) - borderRadius;
-
-      const widthPart = 240 + (tbbtHeight / lineContainerRect.height) * 680;
-      const lrWidth = (to.x > from.x ? to.x - from.x : 0) + widthPart;
-      const rwWidth = (to.x < from.x ? from.x - to.x : 0) + widthPart;
-
-      newlyCalculatedLines.push({
-        segmentOne: {
-          ...from,
-          type: areWeGoingDown ? 'down-LR' : 'up-LR',
-          width: lrWidth,
-          height: borderRadius
-        },
-        segmentTwo: {
-          x: from.x + lrWidth - borderRadius,
-          y: areWeGoingDown ? from.y : to.y,
-          type: areWeGoingDown ? 'down' : 'up',
-          height: tbbtHeight + 20,
-          width: borderRadius
-        },
-        segmentThree: {
-          ...to,
-          type: areWeGoingDown ? 'down-RL' : 'up-RL',
-          width: rwWidth,
-          height: borderRadius
-        }
-      });
-    });
-
-    setTheLines(newlyCalculatedLines);
+    setTheLines(edgesToDependencyLines(edges, lineContainerRect));
   };
 
   useResizer(containerRef, [containerRef, edges], calculateLines);
@@ -100,6 +46,65 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
 };
 
 export default DependencyLines;
+
+
+function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRect): DependencyLine[] {
+  
+  const newlyCalculatedLines: DependencyLine[] = [];
+  edges.forEach((edge) => {
+    const fromElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.from}"] span`);
+    const toElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.to}"] span`);
+
+    if (!fromElement || !toElement) return;
+
+    const fromRect = fromElement.getBoundingClientRect();
+    const toRect = toElement.getBoundingClientRect();
+
+    const areWeGoingDown = fromRect.top < toRect.top;
+
+    const leftStartPointPadding = 8;
+
+    const from: Point = {
+      x: leftStartPointPadding + fromRect.left - lineContainerRect.left + fromRect.width + 1,
+      y: fromRect.top - lineContainerRect.top + 4 + (areWeGoingDown ? 7 : 0)
+    };
+
+    const to: Point = {
+      x: leftStartPointPadding + toRect.left - lineContainerRect.left + toRect.width,
+      y: toRect.top - lineContainerRect.top - 4 + (areWeGoingDown ? -1 : 6)
+    };
+
+    const tbbtHeight = Math.abs(from.y - to.y) - borderRadius;
+
+    const widthPart = 240 + (tbbtHeight / lineContainerRect.height) * 680;
+    const lrWidth = (to.x > from.x ? to.x - from.x : 0) + widthPart;
+    const rwWidth = (to.x < from.x ? from.x - to.x : 0) + widthPart;
+
+    newlyCalculatedLines.push({
+      segmentOne: {
+        ...from,
+        type: areWeGoingDown ? 'down-LR' : 'up-LR',
+        width: lrWidth,
+        height: borderRadius
+      },
+      segmentTwo: {
+        x: from.x + lrWidth - borderRadius,
+        y: areWeGoingDown ? from.y : to.y,
+        type: areWeGoingDown ? 'down' : 'up',
+        height: tbbtHeight + 20,
+        width: borderRadius
+      },
+      segmentThree: {
+        ...to,
+        type: areWeGoingDown ? 'down-RL' : 'up-RL',
+        width: rwWidth,
+        height: borderRadius
+      }
+    });
+  });
+
+  return newlyCalculatedLines;
+}
 
 interface Point {
   x: number;
