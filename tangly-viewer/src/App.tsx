@@ -7,6 +7,8 @@ import DependencyLines from './components/DependencyLines.tsx';
 import buildEdges from './utils/buildEdges.ts';
 import {filterEdges} from './utils/filterEdges.ts';
 
+import './font/css/tangly.css';
+
 interface AppProps {
   data: ProjectGraphData;
 }
@@ -22,15 +24,8 @@ export function App({data}: AppProps) {
 
   // Convert import edges to edges with classes
 
-  const handleNodeClick = (nodePath: string, isDirectory: boolean) => {
-    if (treeSelection?.nodePath === nodePath) {
-      setTreeSelection(null);
-    } else {
-      setTreeSelection({
-        nodePath,
-        isDirectory
-      });
-    }
+  const handleNodeClick = (selection: TreeSelection) => {
+    setTreeSelection(selection);
   };
 
   return (

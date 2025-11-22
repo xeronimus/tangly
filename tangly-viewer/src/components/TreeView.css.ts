@@ -14,6 +14,18 @@ const treeItem = style({
   listStyleType: 'none'
 });
 
+export const treeItemToggles = style({
+  fontSize: 12,
+  backgroundColor: 'white',
+  padding: '1px 0',
+  borderRadius: 4,
+  color: 'black'
+});
+
+globalStyle(`${treeItem} > span `, {
+  padding: 4
+});
+
 export const directoryItem = style([
   treeItem,
   {
@@ -30,7 +42,8 @@ export const directoryItem = style([
 export const directoryItemSelected = style({});
 
 globalStyle(`${directoryItemSelected} > span `, {
-  backgroundColor: '#2e436e'
+  backgroundColor: '#2e436e',
+  borderRadius: 5
 });
 
 export const fileItem = style([
@@ -48,7 +61,8 @@ export const fileItem = style([
 export const fileItemSelected = style({});
 
 globalStyle(`${fileItemSelected} > span `, {
-  backgroundColor: '#2e436e'
+  backgroundColor: '#2e436e',
+  borderRadius: 5
 });
 
 export const treeWrapper = style({

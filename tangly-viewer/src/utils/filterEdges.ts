@@ -1,19 +1,25 @@
 ﻿import {ImportEdge, TreeSelection} from '../types.ts';
 
-export function filterEdges(importEdges: ImportEdge[], selectedNode: TreeSelection | null): ImportEdge[] {
-  if (!selectedNode) {
-    return [...importEdges];
+export function filterEdges(importEdges: ImportEdge[], treeSelection: TreeSelection | null): ImportEdge[] {
+  if (!treeSelection) {
+    return [];
   }
 
-  if (selectedNode.isDirectory) {
+  if (treeSelection.isDirectory) {
     return importEdges.filter((edge) => {
       const edgeFromDir = edge.from.substring(0, edge.from.lastIndexOf('/'));
       const edgeToDir = edge.to.substring(0, edge.to.lastIndexOf('/'));
-      return edgeFromDir === selectedNode.nodePath || edgeToDir === selectedNode.nodePath;
+      return (
+        (treeSelection.includeOutgoing && edgeFromDir === treeSelection.nodePath) ||
+        (treeSelection.includeIncoming && edgeToDir === treeSelection.nodePath)
+      );
     });
   } else {
     return importEdges.filter((edge) => {
-      return edge.from === selectedNode.nodePath || edge.to === selectedNode.nodePath;
+      return (
+        (treeSelection.includeOutgoing && edge.from === treeSelection.nodePath) ||
+        (treeSelection.includeIncoming && edge.to === treeSelection.nodePath)
+      );
     });
   }
 }

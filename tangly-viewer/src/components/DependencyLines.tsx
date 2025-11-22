@@ -47,9 +47,7 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
 
 export default DependencyLines;
 
-
 function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRect): DependencyLine[] {
-
   return edges.map((edge): DependencyLine => {
     const fromElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.from}"] span`);
     const toElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.to}"] span`);
@@ -104,7 +102,7 @@ function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRe
         height: borderRadius,
         class: edge.class
       }
-    }
+    };
   });
 }
 

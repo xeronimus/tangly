@@ -35,7 +35,6 @@ export interface ProjectGraphData {
   importEdges: ImportEdge[];
 }
 
-
 export type EdgeClass = 'import-regular' | 'import-type' | 'import-side-effect';
 
 export interface EdgeWithClass {
@@ -54,4 +53,6 @@ export interface DirNode {
 export interface TreeSelection {
   nodePath: string;
   isDirectory: boolean;
+  includeIncoming: boolean;
+  includeOutgoing: boolean;
 }
