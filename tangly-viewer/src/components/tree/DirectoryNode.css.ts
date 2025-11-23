@@ -10,13 +10,7 @@ export const treeNodeList = style({
 export const directoryItem = style([
   treeItem,
   {
-    cursor: 'pointer',
-    selectors: {
-      '&::before': {
-        content: '📁',
-        marginRight: 1
-      }
-    }
+    cursor: 'pointer'
   }
 ]);
 

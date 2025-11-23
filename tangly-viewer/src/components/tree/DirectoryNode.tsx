@@ -1,4 +1,5 @@
-﻿import {DirectoryNodeData, TreeSelection} from '../../types.ts';
+﻿import {FolderIcon} from 'lucide-react';
+import {DirectoryNodeData, TreeSelection} from '../../types.ts';
 import * as styles from './DirectoryNode.css';
 import IncomingOutgoingSelection from './IncomingOutgoingSelection.tsx';
 import FileNode from './FileNode.tsx';
@@ -44,6 +45,7 @@ const DirectoryNode = ({node, rootDir, treeSelection, onNodeClick, isRoot = fals
           onClick={handleNodeClick}
         >
           <span>
+            <FolderIcon size={12} fill="rgba(100,100,100,0.8)" />
             {node.name}{' '}
             {selected && (
               <IncomingOutgoingSelection

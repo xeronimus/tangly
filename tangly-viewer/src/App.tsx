@@ -6,7 +6,6 @@ import DependencyLines from './components/DependencyLines.tsx';
 import buildEdges from './utils/buildEdges.ts';
 import {filterEdges} from './utils/filterEdges.ts';
 
-import './font/css/tangly.css';
 import {JsonOutput} from './importedTypes.ts';
 import TreeView from './components/tree/TreeView.tsx';
 

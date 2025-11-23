@@ -1,4 +1,6 @@
-﻿import * as styles from './IncomingOutgoingSelection.css';
+﻿import {ArrowLeftToLineIcon, ArrowRightToLineIcon} from 'lucide-react';
+
+import * as styles from './IncomingOutgoingSelection.css';
 
 interface IncomingOutgoingSelectionProps {
   incoming: boolean;
@@ -20,16 +22,24 @@ const IncomingOutgoingSelection = ({incoming, outgoing, onChange}: IncomingOutgo
     <span className={styles.treeItemToggles}>
       <span onClick={handleIncClick}>
         {incoming ? (
-          <i className="icon icon-left-circle" title="Toggle incoming dependencies" />
+          <ArrowLeftToLineIcon height={12} strokeWidth={3}>
+            <title>Toggle incoming dependencies</title>
+          </ArrowLeftToLineIcon>
         ) : (
-          <i className="icon icon-left-circled" />
+          <ArrowLeftToLineIcon height={12} style={{color: '#555'}}>
+            <title>Toggle incoming dependencies</title>
+          </ArrowLeftToLineIcon>
         )}
       </span>
       <span onClick={handleOutClick}>
         {outgoing ? (
-          <i className="icon icon-right-circle" title="Toggle outgoing dependencies" />
+          <ArrowRightToLineIcon height={12} strokeWidth={3}>
+            <title>Toggle outgoing dependencies</title>
+          </ArrowRightToLineIcon>
         ) : (
-          <i className="icon icon-right-circled" />
+          <ArrowRightToLineIcon height={12} style={{color: '#555'}}>
+            <title>Toggle outgoing dependencies</title>
+          </ArrowRightToLineIcon>
         )}
       </span>
     </span>

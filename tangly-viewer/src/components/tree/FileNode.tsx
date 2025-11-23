@@ -1,6 +1,7 @@
 ﻿import {FileNodeData, TreeSelection} from '../../types.ts';
 import * as styles from './FileNode.css';
 import IncomingOutgoingSelection from './IncomingOutgoingSelection.tsx';
+import {FileIcon} from 'lucide-react';
 
 interface FileNodeProps {
   node: FileNodeData;
@@ -49,6 +50,7 @@ const FileNode = ({node, rootDir, treeSelection, onNodeClick}: FileNodeProps) =>
       data-folder={folderPath}
     >
       <span>
+        <FileIcon size={12} fill="rgba(100,100,100,0.8)" />
         {fileName}{' '}
         {selected && (
           <IncomingOutgoingSelection

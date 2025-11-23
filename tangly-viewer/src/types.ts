@@ -12,6 +12,7 @@ export interface DirectoryNodeData {
   name: string;
   childDirectories: DirectoryNodeData[];
   files: FileNodeData[];
+  collapsed?: boolean;
 }
 
 export interface FileNodeData {

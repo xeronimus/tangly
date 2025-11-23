@@ -8,6 +8,11 @@ export const treeItem = style({
   listStyleType: 'none'
 });
 
+globalStyle(`${treeItem} > span > svg `, {
+  display: 'inline-block',
+  marginRight: 4
+});
+
 globalStyle(`${treeItem} > span `, {
   padding: 4
 });
