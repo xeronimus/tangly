@@ -26,7 +26,7 @@ export function App({data}: AppProps) {
     setTree(toggleCollapsed(tree, nodePath));
   };
 
-  let edges = buildEdges(data.importEdges, data.metadata.rootDir);
+  let edges = buildEdges(data.importEdges, data.metadata.rootDir, tree);
   edges = filterEdges(edges, treeSelection);
 
   return (
@@ -79,7 +79,7 @@ export function App({data}: AppProps) {
           onNodeCollapsedToggled={handleNodeCollapsedToggled}
         />
 
-        <DependencyLines edges={edges} containerRef={containerRef} />
+        <DependencyLines tree={tree} edges={edges} containerRef={containerRef} />
       </div>
     </div>
   );

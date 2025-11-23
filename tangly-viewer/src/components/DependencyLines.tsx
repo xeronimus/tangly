@@ -1,5 +1,5 @@
 ﻿import React, {useState} from 'react';
-import {EdgeClass, EdgeWithClass} from '../types.ts';
+import {DirectoryNodeData, EdgeClass, EdgeWithClass} from '../types.ts';
 import * as styles from './DependencyLines.css';
 import useResizer from './useResizer.ts';
 import css from '../utils/asCSSProperties.ts';
@@ -8,9 +8,10 @@ import {borderRadius} from './DependencyLines.css';
 interface NDependencyLinesProps {
   edges: EdgeWithClass[];
   containerRef: React.RefObject<HTMLDivElement | null>;
+  tree: DirectoryNodeData;
 }
 
-const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
+const DependencyLines = ({edges, containerRef, tree}: NDependencyLinesProps) => {
   const [theLines, setTheLines] = useState<DependencyLine[]>([]);
 
   const calculateLines = () => {
@@ -21,7 +22,7 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
     setTheLines(edgesToDependencyLines(edges, lineContainerRect));
   };
 
-  useResizer(containerRef, [containerRef, edges], calculateLines);
+  useResizer(containerRef, [containerRef, edges, tree], calculateLines);
 
   return (
     <div className={styles.dependencyLinesContainer}>
@@ -56,7 +57,7 @@ function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRe
       const toElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.to}"] span`);
 
       if (!fromElement || !toElement) {
-        console.warn(`Cannot find element from ${edge.from}`);
+        console.warn(`Cannot find element from=${edge.from} to=${edge.to}`);
         return null;
       }
 

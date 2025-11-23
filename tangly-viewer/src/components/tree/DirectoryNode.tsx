@@ -54,7 +54,7 @@ const DirectoryNode = ({
       {!isRoot && (
         <li
           className={`${styles.directoryItem} ${selected ? styles.directoryItemSelected : ''}`}
-          data-folder-path={node.relativePath}
+          data-file-path={node.relativePath}
           onClick={handleNodeClick}
         >
           <span>
@@ -73,15 +73,6 @@ const DirectoryNode = ({
 
           {hasContent && (
             <ol className={styles.treeNodeList}>
-              {node.files.map((file) => (
-                <FileNode
-                  key={file.relativePath}
-                  node={file}
-                  rootDir={rootDir}
-                  treeSelection={treeSelection}
-                  onNodeClick={onNodeClick}
-                />
-              ))}
               {node.childDirectories.map((child) => (
                 <DirectoryNode
                   key={child.relativePath}
@@ -92,21 +83,15 @@ const DirectoryNode = ({
                   onNodeCollapsedToggled={onNodeCollapsedToggled}
                 />
               ))}
+              {node.files.map((file) => (
+                <FileNode key={file.relativePath} node={file} treeSelection={treeSelection} onNodeClick={onNodeClick} />
+              ))}
             </ol>
           )}
         </li>
       )}
       {isRoot && (
         <>
-          {node.files.map((file) => (
-            <FileNode
-              key={file.relativePath}
-              node={file}
-              rootDir={rootDir}
-              treeSelection={treeSelection}
-              onNodeClick={onNodeClick}
-            />
-          ))}
           {node.childDirectories.map((child) => (
             <DirectoryNode
               key={child.relativePath}
@@ -116,6 +101,9 @@ const DirectoryNode = ({
               onNodeClick={onNodeClick}
               onNodeCollapsedToggled={onNodeCollapsedToggled}
             />
+          ))}
+          {node.files.map((file) => (
+            <FileNode key={file.relativePath} node={file} treeSelection={treeSelection} onNodeClick={onNodeClick} />
           ))}
         </>
       )}

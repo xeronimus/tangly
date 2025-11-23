@@ -7,12 +7,14 @@ export function filterEdges(importEdges: EdgeWithClass[], treeSelection: TreeSel
 
   if (treeSelection.isDirectory) {
     return importEdges.filter((edge) => {
-      const edgeFromDir = edge.from.substring(0, edge.from.lastIndexOf('/'));
-      const edgeToDir = edge.to.substring(0, edge.to.lastIndexOf('/'));
+      // If edge.from/to is a directory, use it directly. Otherwise extract the directory from the file path.
+      const edgeFromDir = getDirectoryPath(edge.from);
+      const edgeToDir = getDirectoryPath(edge.to);
 
       return (
-        (treeSelection.includeOutgoing && edgeFromDir === treeSelection.nodePath) ||
-        (treeSelection.includeIncoming && edgeToDir === treeSelection.nodePath)
+        (treeSelection.includeOutgoing &&
+          (edgeFromDir === treeSelection.nodePath || edge.from === treeSelection.nodePath)) ||
+        (treeSelection.includeIncoming && (edgeToDir === treeSelection.nodePath || edge.to === treeSelection.nodePath))
       );
     });
   } else {
@@ -23,4 +25,10 @@ export function filterEdges(importEdges: EdgeWithClass[], treeSelection: TreeSel
       );
     });
   }
+}
+
+function getDirectoryPath(path: string): string {
+  const lastSlashIndex = path.lastIndexOf('/');
+  if (lastSlashIndex === -1) return path;
+  return path.substring(0, lastSlashIndex);
 }

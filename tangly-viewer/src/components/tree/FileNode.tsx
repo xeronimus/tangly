@@ -5,12 +5,11 @@ import {FileIcon} from 'lucide-react';
 
 interface FileNodeProps {
   node: FileNodeData;
-  rootDir: string;
   treeSelection: TreeSelection | null;
   onNodeClick: (selection: TreeSelection) => void;
 }
 
-const FileNode = ({node, rootDir, treeSelection, onNodeClick}: FileNodeProps) => {
+const FileNode = ({node, treeSelection, onNodeClick}: FileNodeProps) => {
   const handleNodeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     onNodeClick({
@@ -39,15 +38,12 @@ const FileNode = ({node, rootDir, treeSelection, onNodeClick}: FileNodeProps) =>
     fileClass = `${styles.fileItem} ${styles.entryPoint}`;
   }
 
-  const folderPath = node.parent || rootDir;
-
   const selected = treeSelection?.nodePath === node.relativePath;
   return (
     <li
       className={`${fileClass} ${selected ? styles.fileItemSelected : ''}`}
       onClick={handleNodeClick}
       data-file-path={node.relativePath}
-      data-folder={folderPath}
     >
       <span>
         <FileIcon size={12} fill="rgba(100,100,100,0.8)" />
