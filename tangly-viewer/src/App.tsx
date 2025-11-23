@@ -8,6 +8,7 @@ import {filterEdges} from './utils/filterEdges.ts';
 
 import {JsonOutput} from './importedTypes.ts';
 import TreeView from './components/tree/TreeView.tsx';
+import Toolbar from './components/Toolbar.tsx';
 
 interface AppProps {
   data: JsonOutput;
@@ -28,6 +29,13 @@ export function App({data}: AppProps) {
 
   let edges = buildEdges(data.importEdges, data.metadata.rootDir, tree);
   edges = filterEdges(edges, treeSelection);
+
+  const handleCollapseAll = () => {
+    setTree(setAllCollapsedFlags(tree, true));
+  };
+  const handleExpandAll = () => {
+    setTree(setAllCollapsedFlags(tree, false));
+  };
 
   return (
     <div>
@@ -71,6 +79,12 @@ export function App({data}: AppProps) {
 
       {/* Main Graph Container */}
       <div ref={containerRef} className={styles.container}>
+        <Toolbar
+          selectedPath={treeSelection?.nodePath}
+          onCollapseAll={handleCollapseAll}
+          onExpandAll={handleExpandAll}
+        />
+
         <TreeView
           tree={tree}
           rootDir={data.metadata.rootDir}
@@ -93,5 +107,13 @@ const toggleCollapsed = (currentNode: DirectoryNodeData, nodePathToToggle: strin
   return {
     ...currentNode,
     childDirectories: currentNode.childDirectories.map((c) => toggleCollapsed(c, nodePathToToggle))
+  };
+};
+
+const setAllCollapsedFlags = (currentNode: DirectoryNodeData, collapsed: boolean): DirectoryNodeData => {
+  return {
+    ...currentNode,
+    collapsed,
+    childDirectories: currentNode.childDirectories.map((c) => setAllCollapsedFlags(c, collapsed))
   };
 };

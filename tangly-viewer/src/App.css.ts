@@ -19,7 +19,7 @@ export const title = style({
 
 export const container = style({
   position: 'relative',
-  padding: '30px',
+  padding: '12px 30px 30px 12px',
   borderRadius: '8px',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
   minHeight: '400px',
