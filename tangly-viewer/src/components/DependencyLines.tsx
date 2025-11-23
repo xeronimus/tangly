@@ -29,6 +29,8 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
         <React.Fragment key={i}>
           {[d.segmentOne, d.segmentTwo, d.segmentThree].map((dls: DependencyLineSegment) => (
             <div
+              onClick={() => console.log(d)}
+              title={`${d.fromPath} → ${d.toPath}`}
               key={`line-${i}:${dls.type}`}
               className={`${styles.lineBoxVariants[dls.type]} dls-${dls.class}`}
               style={css({
@@ -80,6 +82,8 @@ function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRe
     const rwWidth = (to.x < from.x ? from.x - to.x : 0) + widthPart;
 
     return {
+      fromPath: edge.from,
+      toPath: edge.to,
       segmentOne: {
         ...from,
         type: areWeGoingDown ? 'down-LR' : 'up-LR',
@@ -123,6 +127,8 @@ interface DependencyLineSegment {
 }
 
 interface DependencyLine {
+  fromPath: string;
+  toPath: string;
   segmentOne: DependencyLineSegment;
   segmentTwo: DependencyLineSegment;
   segmentThree: DependencyLineSegment;
