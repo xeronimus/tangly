@@ -1,12 +1,12 @@
 {
   "metadata": {
     "rootDir": "C:/Users/Sergio.Trentini/Documents/git/my-life",
-    "totalFiles": 266,
-    "totalEdges": 945,
-    "averageDependencies": 3.5526315789473686,
+    "totalFiles": 300,
+    "totalEdges": 1056,
+    "averageDependencies": 3.52,
     "maxDependencies": 31,
-    "filesWithNoDependencies": 54,
-    "filesWithNoDependents": 3,
+    "filesWithNoDependencies": 55,
+    "filesWithNoDependents": 32,
     "circularDependencies": []
   },
   "nodes": [
@@ -764,6 +764,13 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoCache.test.ts",
+      "relativePath": "src/components/commons/photos/PhotoCache.test.ts",
+      "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoCache.ts"],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoCache.ts",
       "relativePath": "src/components/commons/photos/PhotoCache.ts",
       "dependencies": [
@@ -771,6 +778,7 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/envConfig.ts"
       ],
       "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoCache.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/useLoadGcsPhotoItems.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineagePersonCard.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/ItemsActions.ts",
@@ -812,10 +820,20 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/imageHandling.test.ts",
+      "relativePath": "src/components/commons/photos/imageHandling.test.ts",
+      "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/imageHandling.ts"],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/imageHandling.ts",
       "relativePath": "src/components/commons/photos/imageHandling.ts",
       "dependencies": [],
-      "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoDropZone.tsx"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoDropZone.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/imageHandling.test.ts"
+      ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos"
     },
     {
@@ -911,6 +929,13 @@
       "relativePath": "src/components/global.css.ts",
       "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/themes.css.ts"],
       "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/index.tsx"],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/iconCheck.test.ts",
+      "relativePath": "src/components/iconCheck.test.ts",
+      "dependencies": [],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components"
     },
     {
@@ -1169,6 +1194,16 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.test.ts",
+      "relativePath": "src/components/life/layouter.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.ts",
       "relativePath": "src/components/life/layouter.ts",
       "dependencies": [
@@ -1181,6 +1216,7 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/StreamLaneItem.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/YearGrid.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/YearsTimeLine.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/main/GhostLife.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/StreamsEditor.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightStream.tsx",
@@ -1375,6 +1411,17 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.test.ts",
+      "relativePath": "src/components/lineage/calculateLineageTreeConnections.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.ts",
       "relativePath": "src/components/lineage/calculateLineageTreeConnections.ts",
       "dependencies": [
@@ -1384,8 +1431,22 @@
       ],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineageDisplay.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/useCalculateLineageTreeConnections.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+      "relativePath": "src/components/lineage/describeRelationshipWithYou.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
     },
     {
@@ -1396,7 +1457,25 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts"
       ],
-      "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.ts"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.ts"
+      ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "relativePath": "src/components/lineage/getBloodRelation.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
     },
     {
@@ -1408,7 +1487,25 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.ts"
       ],
-      "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineagePersonEditForm.tsx"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineagePersonEditForm.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts"
+      ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "relativePath": "src/components/lineage/organizeGeneration.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageGeneration.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
     },
     {
@@ -1419,7 +1516,10 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts"
       ],
-      "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineageDisplay.tsx"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineageDisplay.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts"
+      ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage"
     },
     {
@@ -2138,10 +2238,20 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/urlUtil.test.ts",
+      "relativePath": "src/components/sidebar/urlUtil.test.ts",
+      "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/urlUtil.ts"],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/urlUtil.ts",
       "relativePath": "src/components/sidebar/urlUtil.ts",
       "dependencies": [],
-      "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/ItemDetailEditForm.tsx"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/ItemDetailEditForm.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/urlUtil.test.ts"
+      ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar"
     },
     {
@@ -2408,6 +2518,16 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.test.ts",
+      "relativePath": "src/data/bookHelper.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.ts",
       "relativePath": "src/data/bookHelper.ts",
       "dependencies": [
@@ -2418,8 +2538,20 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/book/BookKeyboardListener.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/book/BookView.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/book/YearSpanPositionSelector.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.test.ts",
+      "relativePath": "src/data/deriveBoundaries.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
     },
     {
@@ -2433,8 +2565,20 @@
       ],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/main/GhostLife.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.test.ts",
+      "relativePath": "src/data/itemsToRows.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
     },
     {
@@ -2446,15 +2590,29 @@
       ],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightStream.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.test.ts",
+      "relativePath": "src/data/moveElementInArray.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/WithId.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
     },
     {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.ts",
       "relativePath": "src/data/moveElementInArray.ts",
       "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/WithId.ts"],
-      "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/StreamsEditor.tsx"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/StreamsEditor.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.test.ts"
+      ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
     },
     {
@@ -2517,7 +2675,9 @@
       "relativePath": "src/data/service/PersistedItem.ts",
       "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Place.ts"],
       "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service"
@@ -2535,8 +2695,11 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/StorageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveStorageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/PersistedLifeSerializer.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service"
     },
@@ -2579,6 +2742,7 @@
       "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts"],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveStorageService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service"
@@ -2645,6 +2809,17 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.test.ts",
+      "relativePath": "src/data/service/impl/google/GoogleMapService.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemWithStreamProps.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts",
       "relativePath": "src/data/service/impl/google/GoogleMapService.ts",
       "dependencies": [
@@ -2660,7 +2835,8 @@
       ],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/map/MapWithItems.tsx",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/MapWithLocationSelect.tsx"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/MapWithLocationSelect.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.test.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google"
     },
@@ -2694,6 +2870,16 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.test.ts",
+      "relativePath": "src/data/service/impl/google/drive/GoogleDriveService.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/uuid.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.ts",
       "relativePath": "src/data/service/impl/google/drive/GoogleDriveService.ts",
       "dependencies": [
@@ -2701,6 +2887,7 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/fetchUtils.ts"
       ],
       "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveStorageService.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive"
@@ -2718,6 +2905,7 @@
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/App.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/LifeImport.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/LifePersistorObserver.tsx"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive"
@@ -2733,6 +2921,17 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
+      "relativePath": "src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts",
       "relativePath": "src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts",
       "dependencies": [
@@ -2742,6 +2941,8 @@
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/App.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/LifeImport.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/LifePersistorObserver.tsx"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive"
@@ -2763,6 +2964,29 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleAuthService.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "relativePath": "src/data/service/lifeService.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/StorageService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveStorageService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service"
     },
     {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
@@ -2788,9 +3012,23 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/App.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/LifeExport.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/LifeImport.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/LifePersistorObserver.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.test.ts",
+      "relativePath": "src/data/service/lineageService.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service"
     },
     {
@@ -2811,7 +3049,9 @@
       ],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineageSideBar.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/setLineage.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service"
@@ -2839,6 +3079,7 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts"
       ],
       "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/addNewItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/deleteStream.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/modifyItem.ts",
@@ -2846,6 +3087,26 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/setLineage.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+      "relativePath": "src/data/streamsUpdaterFunctions.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdateFunctions.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.test.ts",
+      "relativePath": "src/data/timeUtil.test.ts",
+      "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.ts"],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data"
     },
     {
@@ -2872,8 +3133,11 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleYearSummaryService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts"
       ],
@@ -2896,6 +3160,7 @@
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineagePersonEditForm.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/ItemDetailEditPhotosSection.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts"
@@ -2945,6 +3210,21 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "relativePath": "src/domain/Life.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
       "relativePath": "src/domain/Life.ts",
       "dependencies": [
@@ -2961,6 +3241,8 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/map/MapOptionsBar.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightOptionsBar.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
@@ -2994,14 +3276,18 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/startDateItemComparator.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdateFunctions.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/trashUpdateFunctions.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/ItemsMap.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemWithStreamProps.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/addNewItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/modifyItem.ts",
@@ -3013,6 +3299,19 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+      "relativePath": "src/domain/LifeItemSearchable.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.ts",
       "relativePath": "src/domain/LifeItemSearchable.ts",
       "dependencies": [
@@ -3021,6 +3320,7 @@
       ],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/SearchField.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
@@ -3045,6 +3345,7 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/MapService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/YearSummaryService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleYearSummaryService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
@@ -3052,7 +3353,8 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
@@ -3063,13 +3365,18 @@
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineagePersonEditForm.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineageSideBar.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/LifePersistorObserver.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/setLineage.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/LineageActions.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/LineageState.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
@@ -3079,9 +3386,11 @@
       "relativePath": "src/domain/LineageGeneration.ts",
       "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts"],
       "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
@@ -3096,14 +3405,17 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineagePersonEditForm.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/useCalculateLineageTreeConnections.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightYearSummaryDisplay.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
@@ -3114,13 +3426,15 @@
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineageDisplay.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageGeneration.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
@@ -3136,12 +3450,20 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/MonthInfo.test.ts",
+      "relativePath": "src/domain/MonthInfo.test.ts",
+      "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/MonthInfo.ts"],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/MonthInfo.ts",
       "relativePath": "src/domain/MonthInfo.ts",
       "dependencies": [],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/MonthsGrid.tsx",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/MonthsTimeLine.tsx"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/MonthsTimeLine.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/MonthInfo.test.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
@@ -3156,17 +3478,25 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/LineageSideBar.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/PersonSearchField.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/PersonSelect.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightYearSummaryDisplay.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLineage.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedPerson.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/YearSummaryService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
@@ -3181,8 +3511,21 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/MapService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.test.ts",
+      "relativePath": "src/domain/Stream.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
     {
@@ -3196,18 +3539,26 @@
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/StreamLane.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/StreamsEditor.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdateFunctions.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/StreamsGrouped.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/LifePersistorObserver.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/addNewItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/setStreams.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/ItemsActions.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/ItemsState.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
     },
@@ -3254,6 +3605,7 @@
       "dependencies": [],
       "dependents": [
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/StreamsEditor.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain"
@@ -3345,6 +3697,18 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
+      "relativePath": "src/state/actionHooks/findNearestItem.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.ts",
       "relativePath": "src/state/actionHooks/findNearestItem.ts",
       "dependencies": [
@@ -3352,7 +3716,10 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts"
       ],
-      "dependents": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts"
+      ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks"
     },
     {
@@ -3524,6 +3891,7 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/commonSelectors.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/ItemsActions.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsHooks.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/store.ts"
       ],
@@ -3550,6 +3918,17 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/restoreItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.test.ts",
+      "relativePath": "src/state/items/itemsSelectors.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Place.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/ItemsState.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items"
     },
     {
@@ -3595,7 +3974,8 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightYear.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/addNewItem.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/setPhotoZoomEnabled.ts",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/trashItem.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.test.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items"
     },
@@ -3617,9 +3997,21 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/commonSelectors.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/LineageActions.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageHooks.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/store.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.test.ts",
+      "relativePath": "src/state/lineage/createLineageTree.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
     },
     {
@@ -3634,9 +4026,24 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts"
       ],
       "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts"
       ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.test.ts",
+      "relativePath": "src/state/lineage/findPersonLineage.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts"
+      ],
+      "dependents": [],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
     },
     {
@@ -3647,8 +4054,10 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts"
       ],
       "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/useCalculateLineageTreeConnections.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.test.ts",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
@@ -3669,6 +4078,17 @@
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
     },
     {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.test.ts",
+      "relativePath": "src/state/lineage/lineageSelectors.test.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/LineageState.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts"
+      ],
+      "dependents": [],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
+    },
+    {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts",
       "relativePath": "src/state/lineage/lineageSelectors.ts",
       "dependencies": [
@@ -3686,7 +4106,8 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/PersonSearchField.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/map/MapWithItems.tsx",
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/ItemDetailEditForm.tsx",
-        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightYear.tsx"
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightYear.tsx",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.test.ts"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage"
     },
@@ -3857,6 +4278,83 @@
         "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/SpotlightStreamItem.tsx"
       ],
       "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/user"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "relativePath": "src/testResources/itemHelpers.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemWithStreamProps.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Place.ts"
+      ],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts"
+      ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "relativePath": "src/testResources/lineageTreeHelpers.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageGeneration.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts"
+      ],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.test.ts"
+      ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+      "relativePath": "src/testResources/sampleLife.ts",
+      "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts"
+      ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+      "relativePath": "src/testResources/sampleStreamsA.ts",
+      "dependencies": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts"
+      ],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts"
+      ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources"
+    },
+    {
+      "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+      "relativePath": "src/testResources/streamHelpers.ts",
+      "dependencies": ["C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts"],
+      "dependents": [
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+        "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts"
+      ],
+      "parent": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources"
     },
     {
       "path": "C:/Users/Sergio.Trentini/Documents/git/my-life/vite.config.ts",
@@ -5470,6 +5968,17 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoCache.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoCache.ts",
+      "imports": [
+        {
+          "names": ["PhotoCacheEntry", "getItemsFromCache", "putItemsToCache"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/PhotoCache.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/Logger.ts",
       "imports": [
@@ -5541,6 +6050,17 @@
       "imports": [
         {
           "names": ["vars"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/imageHandling.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/commons/photos/imageHandling.ts",
+      "imports": [
+        {
+          "names": ["getNewImageDimensions"],
           "type": "named",
           "isTypeOnly": false
         }
@@ -6591,6 +7111,28 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemAt"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.ts",
+      "imports": [
+        {
+          "names": ["calculateDateLeftOffset", "calculateStreamItemBarWidth"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/life/layouter.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Boundaries.ts",
       "imports": [
@@ -7577,6 +8119,39 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts",
+      "imports": [
+        {
+          "names": ["PersonLineage"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "imports": [
+        {
+          "names": ["createLineageTreeFromNodes", "createTestPerson", "createTreeNode"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.ts",
+      "imports": [
+        {
+          "names": ["calculateLineageTreeConnections"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/calculateLineageTreeConnections.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/Logger.ts",
       "imports": [
@@ -7610,6 +8185,61 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+      "imports": [
+        {
+          "names": ["Lineage"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["ME_PERSON_ID"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+      "imports": [
+        {
+          "names": ["createLineageTree"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestMe", "createTestPerson"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.ts",
+      "imports": [
+        {
+          "names": ["describeRelationshipWithYou"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/describeRelationshipWithYou.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
       "imports": [
@@ -7637,6 +8267,83 @@
       "imports": [
         {
           "names": ["ME_PERSON_ID"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+      "imports": [
+        {
+          "names": ["Lineage"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
+      "imports": [
+        {
+          "names": ["LineageTree"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts",
+      "imports": [
+        {
+          "names": ["LineageTreeNode"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["ME_PERSON_ID"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+      "imports": [
+        {
+          "names": ["createLineageTree"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestMe", "createTestPerson"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/getBloodRelation.ts",
+      "imports": [
+        {
+          "names": ["getBloodRelation"],
           "type": "named",
           "isTypeOnly": false
         }
@@ -7681,6 +8388,88 @@
       "imports": [
         {
           "names": ["describeRelationship"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
+      "imports": [
+        {
+          "names": ["convertLineageFromPersisted"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageGeneration.ts",
+      "imports": [
+        {
+          "names": ["LineageGeneration"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
+      "imports": [
+        {
+          "names": ["LineageTree"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["ME_PERSON_ID"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+      "imports": [
+        {
+          "names": ["createLineageTree"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "imports": [
+        {
+          "names": ["createLineageTreeFromGenerations", "createTestMe", "createTestPerson"],
+          "type": "named",
+          "isTypeOnly": false
+        },
+        {
+          "names": ["createLineageTreeNode"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/lineage/organizeGeneration.ts",
+      "imports": [
+        {
+          "names": ["organizeGeneration", "organizeLineageTree"],
           "type": "default",
           "isTypeOnly": false
         }
@@ -10674,6 +11463,17 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/urlUtil.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/sidebar/urlUtil.ts",
+      "imports": [
+        {
+          "names": ["makeUrlSafeAndNice"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/components/spotlight/MonthsGrid.tsx",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/MonthInfo.ts",
       "imports": [
@@ -11714,6 +12514,28 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemAt"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.ts",
+      "imports": [
+        {
+          "names": ["getBook", "getItemOnNextPage", "getItemOnPrevPage", "getPageFromBookWithGivenItem"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemWithStreamProps.ts",
       "imports": [
@@ -11730,6 +12552,39 @@
       "imports": [
         {
           "names": ["startDateItemComparator"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+      "imports": [
+        {
+          "names": ["sampleLife"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.ts",
+      "imports": [
+        {
+          "names": ["deriveBoundaries", "deriveGhostBoundaries"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/deriveBoundaries.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
+      "imports": [
+        {
+          "names": ["convertLifeItemsFromPersisted"],
           "type": "named",
           "isTypeOnly": false
         }
@@ -11780,6 +12635,39 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.ts",
+      "imports": [
+        {
+          "names": ["itemsToRows"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedItem.ts",
+      "imports": [
+        {
+          "names": ["PersistedItem"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
+      "imports": [
+        {
+          "names": ["convertLifeItemsFromPersisted"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/itemsToRows.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
       "imports": [
@@ -11797,6 +12685,28 @@
         {
           "names": ["startDateItemComparator"],
           "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/WithId.ts",
+      "imports": [
+        {
+          "names": ["WithId"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/moveElementInArray.ts",
+      "imports": [
+        {
+          "names": ["moveElementInArray"],
+          "type": "default",
           "isTypeOnly": false
         }
       ]
@@ -12110,6 +13020,39 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemWithStreamProps.ts",
+      "imports": [
+        {
+          "names": ["LifeItemWithStreamProps"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemToday", "createTestPlace"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts",
+      "imports": [
+        {
+          "names": ["filterForItemsToAddToMap", "filterForItemsToRemoveFromMap"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/GoogleMapService.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/ItemsMap.ts",
       "imports": [
@@ -12286,6 +13229,28 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/uuid.ts",
+      "imports": [
+        {
+          "names": ["uuid"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.ts",
+      "imports": [
+        {
+          "names": ["gdService"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveService.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/Logger.ts",
       "imports": [
@@ -12374,6 +13339,39 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+      "imports": [
+        {
+          "names": ["sampleLife"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
+      "imports": [
+        {
+          "names": ["PersistedLife"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts",
+      "imports": [
+        {
+          "names": ["srlzr"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
       "imports": [
@@ -12391,6 +13389,181 @@
         {
           "names": ["PersistedLifeSerializer"],
           "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+      "imports": [
+        {
+          "names": ["createNewItem"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+      "imports": [
+        {
+          "names": ["Lineage"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["ME_PERSON_ID"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["Stream"],
+          "type": "default",
+          "isTypeOnly": false
+        },
+        {
+          "names": ["createNewStream"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemInNDays", "createTestItemToday"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+      "imports": [
+        {
+          "names": ["sampleLife"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+      "imports": [
+        {
+          "names": ["sampleStreamsA"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestStream"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.ts",
+      "imports": [
+        {
+          "names": ["toTsSeconds"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedItem.ts",
+      "imports": [
+        {
+          "names": ["PersistedItem"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
+      "imports": [
+        {
+          "names": ["PersistedLife"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/StorageService.ts",
+      "imports": [
+        {
+          "names": ["StorageService"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/GoogleDriveStorageService.ts",
+      "imports": [
+        {
+          "names": ["GoogleDriveStorageServiceFactory"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/impl/google/drive/jsonPersistedLifeSerializer.ts",
+      "imports": [
+        {
+          "names": ["persistedLifeSerializer"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lifeService.ts",
+      "imports": [
+        {
+          "names": [
+            "LifeServiceFactory",
+            "calculateInsightsData",
+            "convertLifeItemsFromPersisted",
+            "convertLifeToPersisted"
+          ],
+          "type": "default",
           "isTypeOnly": false
         }
       ]
@@ -12566,6 +13739,39 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+      "imports": [
+        {
+          "names": ["Lineage"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["Person", "Gender", "ME_PERSON_ID", "PersonWithBirth"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
+      "imports": [
+        {
+          "names": ["addNewChild", "addNewParent", "addNewSpouse", "updatePerson"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/lineageService.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
       "imports": [
@@ -12720,6 +13926,77 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["Stream"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemInNDays", "createTestItemToday"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+      "imports": [
+        {
+          "names": ["sampleStreamsA"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestStream"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdaterFunctions.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/streamsUpdateFunctions.ts",
+      "imports": [
+        {
+          "names": [
+            "updateStreamsDeleteStream",
+            "updateStreamsRemoveItem",
+            "updateStreamsWithModifiedItem",
+            "updateStreamsWithNewItem"
+          ],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.ts",
+      "imports": [
+        {
+          "names": ["getAgeString", "isBeforeDate", "resetTime"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/Logger.ts",
       "imports": [
@@ -12769,6 +14046,89 @@
       "imports": [
         {
           "names": ["LifeItemWithStreamProps"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/timeUtil.ts",
+      "imports": [
+        {
+          "names": ["formatDateNumeric"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemInNDays", "createTestItemToday"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+      "imports": [
+        {
+          "names": ["sampleStreamsA"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestStream"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
+      "imports": [
+        {
+          "names": [
+            "denormalizeStreamDataToItems",
+            "getNextItemInSameStream",
+            "getPrevItemInSameStream",
+            "pickAllItemsFlat",
+            "pickItemsInYearFlat"
+          ],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+      "imports": [
+        {
+          "names": ["LifeItem", "createNewItem"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["Stream", "createNewStream"],
           "type": "default",
           "isTypeOnly": false
         }
@@ -12847,6 +14207,61 @@
         {
           "names": ["Place"],
           "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemToday"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Life.ts",
+      "imports": [
+        {
+          "names": ["denormalizeStreamDataToItems"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+      "imports": [
+        {
+          "names": ["createNewItem"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.ts",
+      "imports": [
+        {
+          "names": ["itemsToSearchableItems"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemSearchable.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["createNewStream"],
+          "type": "named",
           "isTypeOnly": false
         }
       ]
@@ -12951,12 +14366,56 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/MonthInfo.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/MonthInfo.ts",
+      "imports": [
+        {
+          "names": ["getMonthsInfoForSpotlightYear"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Place.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LatLng.ts",
       "imports": [
         {
           "names": ["LatLng"],
           "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemToday"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItem.ts",
+      "imports": [
+        {
+          "names": ["createNewItem"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["createNewStream", "streamsToStreamDescriptions"],
+          "type": "named",
           "isTypeOnly": false
         }
       ]
@@ -13253,6 +14712,50 @@
       "imports": [
         {
           "names": ["useAppStore"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["Stream"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItem", "createTestItemInNDays", "createTestItemToday"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestStream"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/actionHooks/findNearestItem.ts",
+      "imports": [
+        {
+          "names": ["findNearestItem"],
           "type": "named",
           "isTypeOnly": false
         }
@@ -13787,6 +15290,54 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Place.ts",
+      "imports": [
+        {
+          "names": ["Place"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/ItemsState.ts",
+      "imports": [
+        {
+          "names": ["ItemsState", "getDefaultItemsState"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts",
+      "imports": [
+        {
+          "names": [
+            "selectActiveItemsInYearRangeSearchable",
+            "selectActiveItemsWithPlaceAndInYearRangeSearchable",
+            "selectActiveStreams",
+            "selectAllStreamDescriptions",
+            "selectBoundaries",
+            "selectCollapseItemsOfActiveStreamsToOne",
+            "selectItemFromActiveStreamsById",
+            "selectItemFromActiveStreamsByIdOrThrow",
+            "selectItemRowsForStream",
+            "selectItemsForMapView",
+            "selectItemsInYearFlat",
+            "selectLifeStatistics",
+            "selectNewestItemOfActiveStreams",
+            "selectWriteableStreamDescriptions"
+          ],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/items/itemsSelectors.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/bookHelper.ts",
       "imports": [
@@ -13986,6 +15537,39 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Lineage.ts",
+      "imports": [
+        {
+          "names": ["Lineage"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestMe", "createTestPerson"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
+      "imports": [
+        {
+          "names": ["createLineageTree"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/createLineageTree.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/Logger.ts",
       "imports": [
@@ -14052,6 +15636,39 @@
       ]
     },
     {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["ME_PERSON_ID"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "imports": [
+        {
+          "names": ["createLineageTreeFromNodes", "createTestPerson", "createTreeNode"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts",
+      "imports": [
+        {
+          "names": ["findPersonLineage"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
       "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/findPersonLineage.ts",
       "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
       "imports": [
@@ -14090,6 +15707,47 @@
       "imports": [
         {
           "names": ["throwIfNoLineage"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["ME_PERSON_ID"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/LineageState.ts",
+      "imports": [
+        {
+          "names": ["LineageState", "getDefaultLineageState"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.test.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/state/lineage/lineageSelectors.ts",
+      "imports": [
+        {
+          "names": [
+            "selectAllPeopleSorted",
+            "selectChildren",
+            "selectLineageTree",
+            "selectMyBirthDate",
+            "selectPersonLineage",
+            "selectPotentialParents",
+            "selectPotentialSpouses"
+          ],
           "type": "named",
           "isTypeOnly": false
         }
@@ -14333,6 +15991,116 @@
         {
           "names": ["useAppStore"],
           "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LifeItemWithStreamProps.ts",
+      "imports": [
+        {
+          "names": ["LifeItemWithStreamProps"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Place.ts",
+      "imports": [
+        {
+          "names": ["Place"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageGeneration.ts",
+      "imports": [
+        {
+          "names": ["LineageGeneration"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTree.ts",
+      "imports": [
+        {
+          "names": ["LineageTree"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/LineageTreeNode.ts",
+      "imports": [
+        {
+          "names": ["LineageTreeNode"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/lineageTreeHelpers.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Person.ts",
+      "imports": [
+        {
+          "names": ["Person", "ME_PERSON_ID", "PersonWithBirth"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleLife.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/data/service/PersistedLife.ts",
+      "imports": [
+        {
+          "names": ["PersistedLife"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["Stream", "createNewStream"],
+          "type": "default",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/sampleStreamsA.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/itemHelpers.ts",
+      "imports": [
+        {
+          "names": ["createTestItemInNDays", "createTestItemToday"],
+          "type": "named",
+          "isTypeOnly": false
+        }
+      ]
+    },
+    {
+      "from": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/testResources/streamHelpers.ts",
+      "to": "C:/Users/Sergio.Trentini/Documents/git/my-life/src/domain/Stream.ts",
+      "imports": [
+        {
+          "names": ["Stream"],
+          "type": "default",
           "isTypeOnly": false
         }
       ]

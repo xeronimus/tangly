@@ -1,3 +1,20 @@
+﻿export interface JsonOutput {
+  metadata: ProjectGraphMetadata;
+  nodes: GraphNode[]; // in the internal type "ProjectGraph", this is a map. in the output we want to have a flat array.
+  importEdges: ImportEdge[];
+}
+
+export interface ProjectGraphMetadata {
+  rootDir: string;
+  totalFiles: number;
+  totalEdges: number;
+  averageDependencies: number;
+  maxDependencies: number;
+  filesWithNoDependencies: number;
+  filesWithNoDependents: number;
+  circularDependencies: string[][];
+}
+
 /**
  * Types for the tangly project graph analyzer
  */
@@ -33,30 +50,4 @@ export interface GraphNode {
   dependents: string[];
   /** Parent directory path */
   parent?: string;
-}
-
-export interface ProjectGraph {
-  /** Map of file path to graph node */
-  nodes: Map<string, GraphNode>;
-  /** Import dependency edges with details */
-  importEdges: ImportEdge[];
-  /** Root directory of the analyzed project */
-  rootDir: string;
-}
-
-export type OutputFormat = 'json' | 'dot' | 'tree';
-
-export interface ConfigFile {
-  /** Output format */
-  format?: OutputFormat;
-  /** Output file path */
-  output?: string;
-
-  /** If specified, use tangly-viewer app */
-  app?: string;
-
-  /** Whether to include external dependencies */
-  includeExternal?: boolean;
-  /** Regex patterns to exclude files from analysis (string or array of strings) */
-  exclude?: string | string[];
 }

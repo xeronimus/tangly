@@ -1,40 +1,3 @@
-export interface ImportInfo {
-  names: string[];
-  type: 'default' | 'named' | 'namespace' | 'side-effect' | 'type';
-  isTypeOnly: boolean;
-}
-
-export interface ImportEdge {
-  from: string;
-  to: string;
-  imports: ImportInfo[];
-}
-
-export interface FileNode {
-  path: string;
-  relativePath: string;
-  dependencies: string[];
-  dependents: string[];
-  parent?: string; // Optional to match JSON formatter output
-}
-
-export interface ProjectGraphMetadata {
-  rootDir: string;
-  totalFiles: number;
-  totalEdges: number;
-  averageDependencies: number;
-  maxDependencies: number;
-  filesWithNoDependencies: number;
-  filesWithNoDependents: number;
-  circularDependencies: string[][];
-}
-
-export interface ProjectGraphData {
-  metadata: ProjectGraphMetadata;
-  nodes: FileNode[];
-  importEdges: ImportEdge[];
-}
-
 export type EdgeClass = 'import-regular' | 'import-type' | 'import-side-effect';
 
 export interface EdgeWithClass {
@@ -43,11 +6,21 @@ export interface EdgeWithClass {
   class: EdgeClass;
 }
 
-export interface DirNode {
-  path: string;
+export interface DirectoryNodeData {
+  relativePath: string;
+  absolutePath: string;
   name: string;
-  children: DirNode[];
-  files: FileNode[];
+  childDirectories: DirectoryNodeData[];
+  files: FileNodeData[];
+}
+
+export interface FileNodeData {
+  relativePath: string;
+  absolutePath: string;
+  name: string;
+  dependencies: string[];
+  dependents: string[];
+  parent?: string;
 }
 
 export interface TreeSelection {

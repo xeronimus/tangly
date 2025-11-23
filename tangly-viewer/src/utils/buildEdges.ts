@@ -1,4 +1,5 @@
-﻿import {ImportEdge, EdgeWithClass} from '../types.ts';
+﻿import {EdgeWithClass} from '../types.ts';
+import {ImportEdge} from '../importedTypes.ts';
 
 export default function buildEdges(importEdges: ImportEdge[], rootDir: string): EdgeWithClass[] {
   return importEdges.map((edge) => {

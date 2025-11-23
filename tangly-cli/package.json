@@ -7,7 +7,8 @@
     "tangly": "./dist/cli.js"
   },
   "scripts": {
-    "build": "tsc",
+    "copy-types": "node -e \"require('fs-extra').copySync('src/publicTypes.ts', '../tangly-viewer/src/importedTypes.ts')\"",
+    "build": "tsc && npm run copy-types",
     "start": "node dist/cli.js",
     "dev": "ts-node src/cli.ts",
     "format": "prettier --write .",

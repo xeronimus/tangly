@@ -1,6 +1,6 @@
-﻿import {ImportEdge, TreeSelection} from '../types.ts';
+﻿import {EdgeWithClass, TreeSelection} from '../types.ts';
 
-export function filterEdges(importEdges: ImportEdge[], treeSelection: TreeSelection | null): ImportEdge[] {
+export function filterEdges(importEdges: EdgeWithClass[], treeSelection: TreeSelection | null): EdgeWithClass[] {
   if (!treeSelection) {
     return [];
   }
@@ -9,6 +9,7 @@ export function filterEdges(importEdges: ImportEdge[], treeSelection: TreeSelect
     return importEdges.filter((edge) => {
       const edgeFromDir = edge.from.substring(0, edge.from.lastIndexOf('/'));
       const edgeToDir = edge.to.substring(0, edge.to.lastIndexOf('/'));
+
       return (
         (treeSelection.includeOutgoing && edgeFromDir === treeSelection.nodePath) ||
         (treeSelection.includeIncoming && edgeToDir === treeSelection.nodePath)

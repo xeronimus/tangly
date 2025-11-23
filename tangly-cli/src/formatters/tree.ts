@@ -1,5 +1,4 @@
-import {ProjectGraph} from '../types';
-import {getGraphStats} from '../graph';
+import {ProjectGraph} from '../internalTypes';
 
 /**
  * Normalize path to use forward slashes for cross-platform consistency
@@ -13,26 +12,26 @@ function normalizePath(filePath: string): string {
  */
 export function formatAsTree(graph: ProjectGraph): string {
   const lines: string[] = [];
-  const stats = getGraphStats(graph);
+  const metadata = graph.metadata;
 
   // Header
   lines.push('='.repeat(80));
-  lines.push(`Dependency Graph for: ${normalizePath(graph.rootDir)}`);
+  lines.push(`Dependency Graph for: ${normalizePath(graph.metadata.rootDir)}`);
   lines.push('='.repeat(80));
   lines.push('');
 
   // Statistics
   lines.push('📊 Statistics:');
-  lines.push(`   ∑ Total files: ${stats.totalFiles}`);
-  lines.push(`   ∑ Total dependencies: ${stats.totalEdges}`);
-  lines.push(`   Ø  Average dependencies per file: ${stats.averageDependencies.toFixed(2)}`);
-  lines.push(`   ↑  Max dependencies: ${stats.maxDependencies}`);
-  lines.push(`   🍃  Files with no dependencies: ${stats.filesWithNoDependencies}`);
-  lines.push(`   📂  Files with no dependents: ${stats.filesWithNoDependents}`);
+  lines.push(`   ∑ Total files: ${metadata.totalFiles}`);
+  lines.push(`   ∑ Total dependencies: ${metadata.totalEdges}`);
+  lines.push(`   Ø  Average dependencies per file: ${metadata.averageDependencies.toFixed(2)}`);
+  lines.push(`   ↑  Max dependencies: ${metadata.maxDependencies}`);
+  lines.push(`   🍃  Files with no dependencies: ${metadata.filesWithNoDependencies}`);
+  lines.push(`   📂  Files with no dependents: ${metadata.filesWithNoDependents}`);
 
-  if (stats.circularDependencies.length > 0) {
+  if (metadata.circularDependencies.length > 0) {
     lines.push('');
-    lines.push(`   ⚠ WARNING: ${stats.circularDependencies.length} circular dependencies detected!`);
+    lines.push(`   ⚠ WARNING: ${metadata.circularDependencies.length} circular dependencies detected!`);
   } else {
     lines.push('');
     lines.push(`   ✅: No circular dependencies detected!`);
@@ -43,10 +42,10 @@ export function formatAsTree(graph: ProjectGraph): string {
   lines.push('');
 
   // Show circular dependencies if any
-  if (stats.circularDependencies.length > 0) {
-    lines.push(`Circular Dependencies: ${stats.circularDependencies.length}`);
-    for (let i = 0; i < stats.circularDependencies.length; i++) {
-      const cycle = stats.circularDependencies[i];
+  if (metadata.circularDependencies.length > 0) {
+    lines.push(`Circular Dependencies: ${metadata.circularDependencies.length}`);
+    for (let i = 0; i < metadata.circularDependencies.length; i++) {
+      const cycle = metadata.circularDependencies[i];
       lines.push(`  ${i + 1}. Cycle of ${cycle.length - 1} files:`);
       for (let j = 0; j < cycle.length; j++) {
         const node = graph.nodes.get(cycle[j]);

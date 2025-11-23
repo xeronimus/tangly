@@ -1,4 +1,4 @@
-import {ProjectGraph} from '../types';
+import {ProjectGraph} from '../internalTypes';
 
 /**
  * Format project graph as DOT (Graphviz) format

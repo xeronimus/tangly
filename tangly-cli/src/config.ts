@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import {ConfigFile, OutputFormat} from './types';
+import {ConfigFile, OutputFormat} from './internalTypes';
 
 /**
  * Read and validate a config file

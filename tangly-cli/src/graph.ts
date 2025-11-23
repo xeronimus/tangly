@@ -1,7 +1,8 @@
-import {ProjectGraph, GraphNode, ImportEdge} from './types';
+import {GraphNode, ImportEdge, ProjectGraphMetadata} from './publicTypes';
 import {findTypeScriptFiles, getRelativePath} from './fileDiscovery';
 import {parseImports} from './parser';
 import * as path from 'path';
+import {ProjectGraph} from './internalTypes';
 
 /**
  * Build a project graph from a project directory
@@ -71,34 +72,31 @@ export function buildProjectGraph(
     }
   }
 
+  const metadata = getGraphMetadata(rootDir, nodes, importEdges);
   return {
     nodes,
     importEdges,
-    rootDir
+    metadata
   };
 }
 
 /**
  * Get statistics about the project graph
  */
-export function getGraphStats(graph: ProjectGraph): {
-  totalFiles: number;
-  totalEdges: number;
-  averageDependencies: number;
-  maxDependencies: number;
-  filesWithNoDependencies: number;
-  filesWithNoDependents: number;
-  circularDependencies: string[][];
-} {
-  const totalFiles = graph.nodes.size;
-  const totalEdges = graph.importEdges.length;
+export function getGraphMetadata(
+  rootDir: string,
+  nodes: Map<string, GraphNode>,
+  importEdges: ImportEdge[]
+): ProjectGraphMetadata {
+  const totalFiles = nodes.size;
+  const totalEdges = importEdges.length;
 
   let maxDependencies = 0;
   let filesWithNoDependencies = 0;
   let filesWithNoDependents = 0;
   let totalDependencies = 0;
 
-  for (const node of graph.nodes.values()) {
+  for (const node of nodes.values()) {
     const depCount = node.dependencies.length;
     totalDependencies += depCount;
 
@@ -116,9 +114,10 @@ export function getGraphStats(graph: ProjectGraph): {
   const averageDependencies = totalFiles > 0 ? totalDependencies / totalFiles : 0;
 
   // Detect circular dependencies
-  const circularDependencies = findCircularDependencies(graph);
+  const circularDependencies = findCircularDependencies(nodes);
 
   return {
+    rootDir,
     totalFiles,
     totalEdges,
     averageDependencies,
@@ -132,7 +131,7 @@ export function getGraphStats(graph: ProjectGraph): {
 /**
  * Find circular dependencies in the graph using DFS
  */
-function findCircularDependencies(graph: ProjectGraph): string[][] {
+function findCircularDependencies(nodes: Map<string, GraphNode>): string[][] {
   const cycles: string[][] = [];
   const visited = new Set<string>();
   const recursionStack = new Set<string>();
@@ -143,7 +142,7 @@ function findCircularDependencies(graph: ProjectGraph): string[][] {
     recursionStack.add(filePath);
     pathStack.push(filePath);
 
-    const node = graph.nodes.get(filePath);
+    const node = nodes.get(filePath);
     if (!node) return;
 
     for (const dep of node.dependencies) {
@@ -161,7 +160,7 @@ function findCircularDependencies(graph: ProjectGraph): string[][] {
     recursionStack.delete(filePath);
   }
 
-  for (const filePath of graph.nodes.keys()) {
+  for (const filePath of nodes.keys()) {
     if (!visited.has(filePath)) {
       dfs(filePath);
     }

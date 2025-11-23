@@ -1,6 +1,5 @@
 import {useRef, useState} from 'react';
-import {ProjectGraphData, EdgeWithClass, TreeSelection} from './types';
-import {TreeView} from './components/TreeView';
+import {TreeSelection} from './types';
 import {buildDirectoryTree} from './utils/buildDirectoryTree';
 import * as styles from './App.css';
 import DependencyLines from './components/DependencyLines.tsx';
@@ -8,25 +7,21 @@ import buildEdges from './utils/buildEdges.ts';
 import {filterEdges} from './utils/filterEdges.ts';
 
 import './font/css/tangly.css';
+import {JsonOutput} from './importedTypes.ts';
+import TreeView from './components/tree/TreeView.tsx';
 
 interface AppProps {
-  data: ProjectGraphData;
+  data: JsonOutput;
 }
 
 export function App({data}: AppProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [treeSelection, setTreeSelection] = useState<TreeSelection | null>(null);
 
-  // Build directory tree from file nodes
   const dirTree = buildDirectoryTree(data.nodes, data.metadata.rootDir);
 
-  const edges: EdgeWithClass[] = buildEdges(filterEdges(data.importEdges, treeSelection), data.metadata.rootDir);
-
-  // Convert import edges to edges with classes
-
-  const handleNodeClick = (selection: TreeSelection) => {
-    setTreeSelection(selection);
-  };
+  let edges = buildEdges(data.importEdges, data.metadata.rootDir);
+  edges = filterEdges(edges, treeSelection);
 
   return (
     <div>
@@ -74,7 +69,7 @@ export function App({data}: AppProps) {
           dirTree={dirTree}
           rootDir={data.metadata.rootDir}
           selectedNode={treeSelection}
-          onNodeClick={handleNodeClick}
+          onNodeClick={setTreeSelection}
         />
 
         <DependencyLines edges={edges} containerRef={containerRef} />

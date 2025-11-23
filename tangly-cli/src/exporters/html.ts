@@ -1,4 +1,4 @@
-import {ProjectGraph} from '../types';
+import {ProjectGraph} from '../internalTypes';
 import {formatAsJson} from '../formatters/json';
 import * as fs from 'fs-extra';
 import * as path from 'path';

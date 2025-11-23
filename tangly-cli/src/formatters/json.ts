@@ -1,5 +1,5 @@
-import {ProjectGraph} from '../types';
-import {getGraphStats} from '../graph';
+import {JsonOutput} from '../publicTypes';
+import {ProjectGraph} from '../internalTypes';
 
 /**
  * Normalize path to use forward slashes for cross-platform consistency
@@ -8,51 +8,22 @@ function normalizePath(filePath: string): string {
   return filePath.replace(/\\/g, '/');
 }
 
-interface JsonOutput {
-  metadata: {
-    rootDir: string;
-    totalFiles: number;
-    totalEdges: number;
-    averageDependencies: number;
-    maxDependencies: number;
-    filesWithNoDependencies: number;
-    filesWithNoDependents: number;
-    circularDependencies: string[][];
-  };
-  nodes: Array<{
-    path: string;
-    relativePath: string;
-    dependencies: string[];
-    dependents: string[];
-    parent?: string;
-  }>;
-  importEdges: Array<{
-    from: string;
-    to: string;
-    imports: Array<{
-      names: string[];
-      type: string;
-      isTypeOnly: boolean;
-    }>;
-  }>;
-}
-
 /**
  * Format project graph as JSON
  */
 export function formatAsJson(graph: ProjectGraph): string {
-  const stats = getGraphStats(graph);
-
   const output: JsonOutput = {
     metadata: {
-      rootDir: normalizePath(graph.rootDir),
-      totalFiles: stats.totalFiles,
-      totalEdges: stats.totalEdges,
-      averageDependencies: stats.averageDependencies,
-      maxDependencies: stats.maxDependencies,
-      filesWithNoDependencies: stats.filesWithNoDependencies,
-      filesWithNoDependents: stats.filesWithNoDependents,
-      circularDependencies: stats.circularDependencies.map((cycle) => cycle.map((filePath) => normalizePath(filePath)))
+      rootDir: normalizePath(graph.metadata.rootDir),
+      totalFiles: graph.metadata.totalFiles,
+      totalEdges: graph.metadata.totalEdges,
+      averageDependencies: graph.metadata.averageDependencies,
+      maxDependencies: graph.metadata.maxDependencies,
+      filesWithNoDependencies: graph.metadata.filesWithNoDependencies,
+      filesWithNoDependents: graph.metadata.filesWithNoDependents,
+      circularDependencies: graph.metadata.circularDependencies.map((cycle) =>
+        cycle.map((filePath) => normalizePath(filePath))
+      )
     },
     nodes: Array.from(graph.nodes.values()).map((node) => ({
       path: normalizePath(node.path),

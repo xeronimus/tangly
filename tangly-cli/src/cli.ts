@@ -4,7 +4,7 @@ import {Command} from 'commander';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as chokidar from 'chokidar';
-import {OutputFormat, ConfigFile} from './types';
+import {OutputFormat, ConfigFile} from './internalTypes';
 import {readConfigFile, mergeOptions} from './config';
 import {buildProjectGraph} from './graph';
 import {formatAsJson} from './formatters/json';
@@ -93,8 +93,8 @@ program
             const graph = buildProjectGraph(rootDir, mergedOptions.includeExternal, excludePatterns);
 
             if (mergedOptions.app) {
-              if(mergedOptions.output ||mergedOptions.format) {
-                console.warn(`Using the tangly-viewer app. Ignoring -f (format) and -o (output)`)
+              if (mergedOptions.output || mergedOptions.format) {
+                console.warn(`Using the tangly-viewer app. Ignoring -f (format) and -o (output)`);
               }
               exportAsHtml(graph, mergedOptions.app);
             } else {

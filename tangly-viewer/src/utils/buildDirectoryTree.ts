@@ -1,22 +1,24 @@
-import {DirNode, FileNode} from '../types';
+import {GraphNode} from '../importedTypes';
+import {DirectoryNodeData} from '../types.ts';
 
 /**
  * Build a tree structure of directories from file nodes
  */
-export function buildDirectoryTree(fileNodes: FileNode[], rootDir: string): DirNode {
-  const root: DirNode = {
-    path: rootDir,
+export function buildDirectoryTree(nodes: GraphNode[], rootDir: string): DirectoryNodeData {
+  const root: DirectoryNodeData = {
+    relativePath: '/',
+    absolutePath: rootDir,
     name: rootDir.split('/').pop() || 'root',
-    children: [],
+    childDirectories: [],
     files: []
   };
 
-  const nodeMap = new Map<string, DirNode>();
+  const nodeMap = new Map<string, DirectoryNodeData>();
   nodeMap.set(rootDir, root);
 
   // Collect all unique directory paths
   const dirPaths = new Set<string>();
-  for (const file of fileNodes) {
+  for (const file of nodes) {
     const parentPath = file.parent || rootDir;
     if (parentPath !== rootDir) {
       dirPaths.add(parentPath);
@@ -36,23 +38,30 @@ export function buildDirectoryTree(fileNodes: FileNode[], rootDir: string): DirN
     const parentNode = nodeMap.get(parentPath);
 
     if (parentNode) {
-      const node: DirNode = {
-        path: dirPath,
+      const node: DirectoryNodeData = {
+        relativePath: dirPath.replace(rootDir, ''),
+        absolutePath: dirPath,
         name: dirPath.split('/').pop() || dirPath,
-        children: [],
+        childDirectories: [],
         files: []
       };
-      parentNode.children.push(node);
+      parentNode.childDirectories.push(node);
       nodeMap.set(dirPath, node);
     }
   }
 
   // Assign files to their parent directories
-  for (const file of fileNodes) {
+  for (const file of nodes) {
     const parentPath = file.parent || rootDir;
     const parentNode = nodeMap.get(parentPath);
     if (parentNode) {
-      parentNode.files.push(file);
+      parentNode.files.push({
+        relativePath: '/' + file.relativePath,
+        absolutePath: file.path,
+        name: file.relativePath.split('/').pop() || file.relativePath,
+        dependencies: file.dependencies,
+        dependents: file.dependents
+      });
     }
   }
 

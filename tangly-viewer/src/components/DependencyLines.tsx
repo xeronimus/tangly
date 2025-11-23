@@ -50,64 +50,67 @@ const DependencyLines = ({edges, containerRef}: NDependencyLinesProps) => {
 export default DependencyLines;
 
 function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRect): DependencyLine[] {
-  return edges.map((edge): DependencyLine => {
-    const fromElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.from}"] span`);
-    const toElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.to}"] span`);
+  return edges
+    .map((edge): DependencyLine | null => {
+      const fromElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.from}"] span`);
+      const toElement = document.querySelector<HTMLElement>(`[data-file-path="${edge.to}"] span`);
 
-    if (!fromElement || !toElement) {
-      throw new Error(`Cannot find element from ${edge.from}`);
-    }
-
-    const fromRect = fromElement.getBoundingClientRect();
-    const toRect = toElement.getBoundingClientRect();
-
-    const areWeGoingDown = fromRect.top < toRect.top;
-
-    const leftStartPointPadding = 8;
-
-    const from: Point = {
-      x: leftStartPointPadding + fromRect.left - lineContainerRect.left + fromRect.width + 1,
-      y: fromRect.top - lineContainerRect.top + 4 + (areWeGoingDown ? 7 : 0)
-    };
-
-    const to: Point = {
-      x: leftStartPointPadding + toRect.left - lineContainerRect.left + toRect.width,
-      y: toRect.top - lineContainerRect.top - 4 + (areWeGoingDown ? -1 : 6)
-    };
-
-    const tbbtHeight = Math.abs(from.y - to.y) - borderRadius;
-
-    const widthPart = 240 + (tbbtHeight / lineContainerRect.height) * 680;
-    const lrWidth = (to.x > from.x ? to.x - from.x : 0) + widthPart;
-    const rwWidth = (to.x < from.x ? from.x - to.x : 0) + widthPart;
-
-    return {
-      fromPath: edge.from,
-      toPath: edge.to,
-      segmentOne: {
-        ...from,
-        type: areWeGoingDown ? 'down-LR' : 'up-LR',
-        width: lrWidth,
-        height: borderRadius,
-        class: edge.class
-      },
-      segmentTwo: {
-        x: from.x + lrWidth - borderRadius,
-        y: areWeGoingDown ? from.y : to.y,
-        type: areWeGoingDown ? 'down' : 'up',
-        height: tbbtHeight + 20,
-        width: borderRadius,
-        class: edge.class
-      },
-      segmentThree: {
-        ...to,
-        type: areWeGoingDown ? 'down-RL' : 'up-RL',
-        width: rwWidth,
-        height: borderRadius,
-        class: edge.class
+      if (!fromElement || !toElement) {
+        console.warn(`Cannot find element from ${edge.from}`);
+        return null;
       }
-    };
-  });
+
+      const fromRect = fromElement.getBoundingClientRect();
+      const toRect = toElement.getBoundingClientRect();
+
+      const areWeGoingDown = fromRect.top < toRect.top;
+
+      const leftStartPointPadding = 8;
+
+      const from: Point = {
+        x: leftStartPointPadding + fromRect.left - lineContainerRect.left + fromRect.width + 1,
+        y: fromRect.top - lineContainerRect.top + 4 + (areWeGoingDown ? 7 : 0)
+      };
+
+      const to: Point = {
+        x: leftStartPointPadding + toRect.left - lineContainerRect.left + toRect.width,
+        y: toRect.top - lineContainerRect.top - 4 + (areWeGoingDown ? -1 : 6)
+      };
+
+      const tbbtHeight = Math.abs(from.y - to.y) - borderRadius;
+
+      const widthPart = 240 + (tbbtHeight / lineContainerRect.height) * 680;
+      const lrWidth = (to.x > from.x ? to.x - from.x : 0) + widthPart;
+      const rwWidth = (to.x < from.x ? from.x - to.x : 0) + widthPart;
+
+      return {
+        fromPath: edge.from,
+        toPath: edge.to,
+        segmentOne: {
+          ...from,
+          type: areWeGoingDown ? 'down-LR' : 'up-LR',
+          width: lrWidth,
+          height: borderRadius,
+          class: edge.class
+        },
+        segmentTwo: {
+          x: from.x + lrWidth - borderRadius,
+          y: areWeGoingDown ? from.y : to.y,
+          type: areWeGoingDown ? 'down' : 'up',
+          height: tbbtHeight + 20,
+          width: borderRadius,
+          class: edge.class
+        },
+        segmentThree: {
+          ...to,
+          type: areWeGoingDown ? 'down-RL' : 'up-RL',
+          width: rwWidth,
+          height: borderRadius,
+          class: edge.class
+        }
+      };
+    })
+    .filter(Boolean) as NonNullable<DependencyLine[]>;
 }
 
 interface Point {

@@ -1,18 +1,18 @@
 ﻿import 'normalize.css';
 import ReactDOM from 'react-dom/client';
 import {App} from './App';
-import {ProjectGraphData} from './types';
+import {JsonOutput} from './importedTypes';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 declare global {
   interface Window {
-    TANGLY_DATA?: ProjectGraphData;
+    TANGLY_DATA?: JsonOutput;
   }
 }
 
 getProjectGraphData()
-  .then((graphData: ProjectGraphData) => {
+  .then((graphData: JsonOutput) => {
     root.render(<App data={graphData} />);
   })
   .catch((error) => {
@@ -26,7 +26,7 @@ getProjectGraphData()
     );
   });
 
-async function getProjectGraphData(): Promise<ProjectGraphData> {
+async function getProjectGraphData(): Promise<JsonOutput> {
   if (window.TANGLY_DATA) {
     return window.TANGLY_DATA;
   } else {

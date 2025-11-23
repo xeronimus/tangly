@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import * as path from 'path';
 import * as fs from 'fs';
-import {ImportDetail, ImportType} from './types';
+import {ImportDetail, ImportType} from './publicTypes';
 
 export interface ParsedImport {
   /** Module specifier (e.g., './utils', 'react') */
