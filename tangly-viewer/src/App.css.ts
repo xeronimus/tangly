@@ -27,45 +27,6 @@ export const container = style({
   color: '#dedede'
 });
 
-export const legend = style({
-  marginTop: '20px',
-  padding: '15px',
-  background: '#f5f5f5',
-  borderRadius: '4px'
-});
-
-export const legendTitle = style({
-  marginTop: 0,
-  fontSize: '16px'
-});
-
-export const legendItem = style({
-  display: 'inline-block',
-  marginRight: '20px',
-  fontSize: '14px'
-});
-
-export const legendLine = style({
-  display: 'inline-block',
-  width: '30px',
-  height: '2px',
-  marginRight: '5px',
-  verticalAlign: 'middle'
-});
-
-export const legendLineRegular = style({
-  background: 'linear-gradient(to right, #e91e63, #00bcd4)'
-});
-
-export const legendLineType = style({
-  background: 'linear-gradient(to right, #9c27b0, #00e676)'
-});
-
-export const legendLineSideEffect = style({
-  background: 'linear-gradient(to right, #ff6f00 50%, transparent 50%)',
-  backgroundSize: '10px 2px'
-});
-
 export const stats = style({
   marginTop: '20px',
   padding: '15px',

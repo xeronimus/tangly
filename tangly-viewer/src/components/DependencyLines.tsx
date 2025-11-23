@@ -65,16 +65,16 @@ function edgesToDependencyLines(edges: EdgeWithClass[], lineContainerRect: DOMRe
 
       const areWeGoingDown = fromRect.top < toRect.top;
 
-      const leftStartPointPadding = 8;
+      const leftStartPointPadding = 5;
 
       const from: Point = {
         x: leftStartPointPadding + fromRect.left - lineContainerRect.left + fromRect.width + 1,
-        y: fromRect.top - lineContainerRect.top + 4 + (areWeGoingDown ? 7 : 0)
+        y: fromRect.top - lineContainerRect.top + (areWeGoingDown ? 15 : 7)
       };
 
       const to: Point = {
         x: leftStartPointPadding + toRect.left - lineContainerRect.left + toRect.width,
-        y: toRect.top - lineContainerRect.top - 4 + (areWeGoingDown ? -1 : 6)
+        y: toRect.top - lineContainerRect.top + (areWeGoingDown ? -1 : 7)
       };
 
       const tbbtHeight = Math.abs(from.y - to.y) - borderRadius;

@@ -1,4 +1,4 @@
-﻿import {FolderIcon} from 'lucide-react';
+﻿import {ChevronDownIcon, ChevronRightIcon, FolderIcon} from 'lucide-react';
 import {DirectoryNodeData, TreeSelection} from '../../types.ts';
 import * as styles from './DirectoryNode.css';
 import IncomingOutgoingSelection from './IncomingOutgoingSelection.tsx';
@@ -9,11 +9,19 @@ interface DirectoryNodeProps {
   rootDir: string;
   treeSelection: TreeSelection | null;
   onNodeClick: (selection: TreeSelection) => void;
+  onNodeCollapsedToggled: (nodePath: string) => void;
   isRoot?: boolean;
 }
 
-const DirectoryNode = ({node, rootDir, treeSelection, onNodeClick, isRoot = false}: DirectoryNodeProps) => {
-  const hasContent = node.files.length > 0 || node.childDirectories.length > 0;
+const DirectoryNode = ({
+  node,
+  rootDir,
+  treeSelection,
+  onNodeClick,
+  onNodeCollapsedToggled,
+  isRoot = false
+}: DirectoryNodeProps) => {
+  const hasContent = !node.collapsed && (node.files.length > 0 || node.childDirectories.length > 0);
 
   const handleNodeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -34,6 +42,11 @@ const DirectoryNode = ({node, rootDir, treeSelection, onNodeClick, isRoot = fals
     });
   };
 
+  const handleCollapseToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onNodeCollapsedToggled(node.relativePath);
+  };
+
   const selected = treeSelection?.nodePath === node.relativePath;
 
   return (
@@ -45,6 +58,8 @@ const DirectoryNode = ({node, rootDir, treeSelection, onNodeClick, isRoot = fals
           onClick={handleNodeClick}
         >
           <span>
+            {node.collapsed && <ChevronRightIcon size={12} onClick={handleCollapseToggle} />}
+            {!node.collapsed && <ChevronDownIcon size={12} onClick={handleCollapseToggle} />}
             <FolderIcon size={12} fill="rgba(100,100,100,0.8)" />
             {node.name}{' '}
             {selected && (
@@ -74,6 +89,7 @@ const DirectoryNode = ({node, rootDir, treeSelection, onNodeClick, isRoot = fals
                   rootDir={rootDir}
                   treeSelection={treeSelection}
                   onNodeClick={onNodeClick}
+                  onNodeCollapsedToggled={onNodeCollapsedToggled}
                 />
               ))}
             </ol>
@@ -98,6 +114,7 @@ const DirectoryNode = ({node, rootDir, treeSelection, onNodeClick, isRoot = fals
               rootDir={rootDir}
               treeSelection={treeSelection}
               onNodeClick={onNodeClick}
+              onNodeCollapsedToggled={onNodeCollapsedToggled}
             />
           ))}
         </>

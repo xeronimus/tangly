@@ -3,22 +3,24 @@ import DirectoryNode from './DirectoryNode.tsx';
 import {DirectoryNodeData, TreeSelection} from '../../types.ts';
 
 interface TreeViewProps {
-  dirTree: DirectoryNodeData;
+  tree: DirectoryNodeData;
   rootDir: string;
   selectedNode: TreeSelection | null;
   onNodeClick: (selection: TreeSelection) => void;
+  onNodeCollapsedToggled: (nodePath: string) => void;
 }
 
-const TreeView = ({dirTree, rootDir, selectedNode, onNodeClick}: TreeViewProps) => {
+const TreeView = ({tree, rootDir, selectedNode, onNodeClick, onNodeCollapsedToggled}: TreeViewProps) => {
   return (
     <div className={styles.treeWrapper}>
       <ol className={styles.tree}>
         <DirectoryNode
-          node={dirTree}
+          isRoot={true}
+          node={tree}
           rootDir={rootDir}
           treeSelection={selectedNode}
           onNodeClick={onNodeClick}
-          isRoot={true}
+          onNodeCollapsedToggled={onNodeCollapsedToggled}
         />
       </ol>
     </div>

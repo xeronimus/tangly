@@ -1,5 +1,5 @@
-import {useRef, useState} from 'react';
-import {TreeSelection} from './types';
+import {useEffect, useRef, useState} from 'react';
+import {DirectoryNodeData, TreeSelection} from './types';
 import {buildDirectoryTree} from './utils/buildDirectoryTree';
 import * as styles from './App.css';
 import DependencyLines from './components/DependencyLines.tsx';
@@ -16,8 +16,15 @@ interface AppProps {
 export function App({data}: AppProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [treeSelection, setTreeSelection] = useState<TreeSelection | null>(null);
+  const [tree, setTree] = useState<DirectoryNodeData>(buildDirectoryTree(data.nodes, data.metadata.rootDir));
 
-  const dirTree = buildDirectoryTree(data.nodes, data.metadata.rootDir);
+  useEffect(() => {
+    setTree(buildDirectoryTree(data.nodes, data.metadata.rootDir));
+  }, [data]);
+
+  const handleNodeCollapsedToggled = (nodePath: string) => {
+    setTree(toggleCollapsed(tree, nodePath));
+  };
 
   let edges = buildEdges(data.importEdges, data.metadata.rootDir);
   edges = filterEdges(edges, treeSelection);
@@ -65,34 +72,26 @@ export function App({data}: AppProps) {
       {/* Main Graph Container */}
       <div ref={containerRef} className={styles.container}>
         <TreeView
-          dirTree={dirTree}
+          tree={tree}
           rootDir={data.metadata.rootDir}
           selectedNode={treeSelection}
           onNodeClick={setTreeSelection}
+          onNodeCollapsedToggled={handleNodeCollapsedToggled}
         />
 
         <DependencyLines edges={edges} containerRef={containerRef} />
       </div>
-
-      {/* Legend */}
-      <div className={styles.legend}>
-        <h3 className={styles.legendTitle}>Legend</h3>
-        <div>
-          <span className={styles.legendItem}>
-            <span className={`${styles.legendLine} ${styles.legendLineRegular}`}></span> Regular Import
-          </span>
-          <span className={styles.legendItem}>
-            <span className={`${styles.legendLine} ${styles.legendLineType}`}></span> Type-only Import
-          </span>
-          <span className={styles.legendItem}>
-            <span className={`${styles.legendLine} ${styles.legendLineSideEffect}`}></span> Side-effect Import
-          </span>
-        </div>
-        <div style={{marginTop: '10px'}}>
-          <span className={styles.legendItem}>📄 File</span>
-          <span className={styles.legendItem}>📁 Folder (click to filter)</span>
-        </div>
-      </div>
     </div>
   );
 }
+
+const toggleCollapsed = (currentNode: DirectoryNodeData, nodePathToToggle: string): DirectoryNodeData => {
+  if (currentNode.relativePath === nodePathToToggle) {
+    return {...currentNode, collapsed: !currentNode.collapsed};
+  }
+
+  return {
+    ...currentNode,
+    childDirectories: currentNode.childDirectories.map((c) => toggleCollapsed(c, nodePathToToggle))
+  };
+};
